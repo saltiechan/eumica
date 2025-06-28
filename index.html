@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <!-- Mobile menu perlu di fix-->
+       <!-- Mobile menu perlu di fix-->
       <div class="hidden md:hidden" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1">
           <a
@@ -344,12 +344,12 @@
       </div>
     </section>
 
-    <section
-      id="#price"
+    <!-- Price Section -->
+    <section id="price"
       class="bg-gradient-to-r from-sky-400 to-teal-300 text-white"
     >
       <div
-        class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 p-6 md:p-16 max-w-7xl mx-auto bg-[#FAF6F0]"
+        class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 p-8 md:p-16 max-w-7xl max-w-none bg-[#FAF6F0] text-gray-800"
       >
         <!-- Left side Image -->
         <div
@@ -362,33 +362,34 @@
             onerror="this.style.display='none'"
           />
         </div>
+
         <!-- Right side Commission Info -->
-        <div class="w-full md:w-1/2 max-w-lg text-center md:text-left">
-          <h1 class="text-4xl md:text-5xl font-bold mb-8 tracking-wide">
+        <div class="w-full md:w-3/5 max-w-lg font-sans">
+          <h1 class="text-5xl font-serif font-bold text-center mb-10 tracking-wider">
             COMMISSION OPEN
           </h1>
-          <div
-            class="flex justify-center md:justify-start gap-12 mb-12 text-lg md:text-xl font-light uppercase tracking-widest"
-          >
+          
+          <div class="flex justify-around text-center mb-12">
             <div>
-              <p class="text-2xl font-semibold mb-1">$10</p>
-              <p>All Size<br />Sketch</p>
+              <p class="text-3xl font-serif font-bold">$10</p>
+              <p class="text-sm uppercase tracking-widest mt-1">All Size<br>Sketch</p>
             </div>
             <div>
-              <p class="text-2xl font-semibold mb-1">$15</p>
-              <p>Headshot</p>
+              <p class="text-3xl font-serif font-bold">$15</p>
+              <p class="text-sm uppercase tracking-widest mt-1">Headshot</p>
             </div>
             <div>
-              <p class="text-2xl font-semibold mb-1">$25</p>
-              <p>Bust Up</p>
+              <p class="text-3xl font-serif font-bold">$25</p>
+              <p class="text-sm uppercase tracking-widest mt-1">Bust Up</p>
             </div>
-            <div>
-              <p class="text-2xl font-semibold mb-1">$30</p>
-              <p>Half Body</p>
-            </div>
+           <div>
+             <p class="text-3xl font-serif font-bold">$30</p>
+             <p class="text-sm uppercase tracking-widest mt-1">Half Body</p>
+           </div>
           </div>
+
           <div
-            class="flex flex-col md:flex-row justify-between gap-14 md:gap-24 text-base md:text-lg"
+            class="flex flex-col md:flex-row justify-around gap-10 md:gap-20 text-base md:pl-4"
           >
             <div>
               <h2 class="text-xl font-semibold mb-3">DO:</h2>
@@ -416,7 +417,10 @@
             </div>
           </div>
         </div>
+        
       </div>
     </section>
+
+    
   </body>
 </html>
