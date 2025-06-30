@@ -121,209 +121,176 @@
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-sky-400 to-indigo-400 text-white">
       <div
-      class="relative min-h-screen w-full overflow-hidden text-white"
-      x-data="{ 
-        images: [ 
-          'image/Fie Commission.jpg', 
-          'image/Manyu.jpg', 
-          'image/Fluff hair sd.jpg', 
-          'image/Chibi Lality.jpg', 
-          'image/violet.jpg', 
-          'image/p_san.jpg' 
-        ], 
-        activeIndex: 0 
-      }" 
-      x-init="setInterval(() => { activeIndex = (activeIndex + 1) % images.length }, 5000)"
->
-      <template x-for="(image, index) in images" :key="index">
-        <div
-          class="absolute inset-0 h-full w-full"
-          x-show="activeIndex === index"
-          x-transition:enter="transition-opacity ease-in-out duration-1000"
-          x-transition:leave="transition-opacity ease-in-out duration-1000"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-        >
-          <img :src="image" alt="Latar belakang karya seni" class="h-full w-full object-cover ken-burns" />
-        </div>
-      </template>
+        class="relative min-h-screen w-full overflow-hidden text-white"
+        x-data="{ 
+          images: [ 
+            'image/Fie Commission.jpg', 
+            'image/Manyu.jpg', 
+            'image/Fluff hair sd.jpg', 
+            'image/Chibi Lality.jpg', 
+            'image/violet.jpg', 
+            'image/p_san.jpg' 
+          ], 
+          activeIndex: 0 
+        }"
+        x-init="setInterval(() => { activeIndex = (activeIndex + 1) % images.length }, 5000)"
+      >
+        <template x-for="(image, index) in images" :key="index">
+          <div
+            class="absolute inset-0 h-full w-full"
+            x-show="activeIndex === index"
+            x-transition:enter="transition-opacity ease-in-out duration-1000"
+            x-transition:leave="transition-opacity ease-in-out duration-1000"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+          >
+            <img :src="image" alt="Latar belakang karya seni" class="h-full w-full object-cover ken-burns" />
+          </div>
+          </template>
 
-      <div class="absolute inset-0 bg-black/60"></div>
+        <div class="absolute inset-0 bg-black/60"></div>
 
-      <div class="relative z-10 flex h-screen flex-col items-center justify-center p-8 text-center">
-        <div 
-          x-data="{ isLoaded: false }" 
-          x-init="setTimeout(() => { isLoaded = true }, 200)"
-          x-show="isLoaded" 
-          x-transition:enter="transition ease-out duration-1000" 
-          x-transition:enter-start="opacity-0 -translate-y-8" 
-          x-transition:enter-end="opacity-100 translate-y-0"
-        >
-          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-r from-slate-100 to-white bg-clip-text text-transparent">
-            Karya Seni Kustom Spesialmu
-          </h1>
-      
-          <p class="text-lg sm:text-xl text-indigo-100/90 mb-8 max-w-xl mx-auto">
-            Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.
-          </p>
-      
-          <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="#gallery" class="w-full sm:w-auto bg-white text-sky-700 hover:bg-slate-100 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105">
-              Lihat Portofolio
-            </a>
-            <a href="#price" class="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-sky-700 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 hover:scale-105">
-              Lihat Harga
-            </a>
+        <div class="relative z-10 flex h-screen flex-col items-center justify-center p-8 text-center">
+          <div
+            x-data="{ isLoaded: false }"
+            x-init="setTimeout(() => { isLoaded = true }, 200)"
+            x-show="isLoaded"
+            x-transition:enter="transition ease-out duration-1000"
+            x-transition:enter-start="opacity-0 -translate-y-8"
+            x-transition:enter-end="opacity-100 translate-y-0"
+          >
+            <h2 class="font-mplus text-xl sm:text-2xl font-semibold text-white/80 mb-2 tracking-wide">
+              あなたのためのオーダーメイドアート
+            </h2>
+            <h1 class="font-mplus text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-r from-slate-100 to-white bg-clip-text text-transparent">
+              Karya Seni Kustom Spesialmu
+            </h1>
+            <p class="text-lg sm:text-xl text-indigo-100/90 mb-8 max-w-xl mx-auto">
+              Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <a
+                href="#gallery"
+                class="w-full sm:w-auto bg-white text-sky-700 hover:bg-slate-100 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105"
+              >
+                Lihat Portofolio
+              </a>
+              <a
+                href="#price"
+                class="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-sky-700 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 hover:scale-105"
+              >
+                Lihat Harga
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    
     </section>
 
     <!-- Portfolio Section -->
-    <section id="gallery" class="py-20 bg-slate-50 overflow-hidden">
+    <section id="gallery" class="py-20 bg-white overflow-hidden">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 class="font-mplus text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             Art Gallery
           </h2>
-          <p class="mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
+          <p class="font-mplus mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
             Berbagai jenis gambar yang telah dibuat sebelumnya.
           </p>
-          <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+          <div class="mt-6 w-24 h-1 bg-slate-900 mx-auto rounded-full"></div>
         </div>
 
+        <!-- Artwork 1 -->
         <div class="md:hidden">
-
-          <!-- Artwork 1 -->
-          <div class="flex overflow-x-auto snap-x snap-mandatory py-4 space-x-6">
-            <div class="flex-shrink-0 w-4"></div>
-
+          <div class="flex overflow-x-auto snap-x snap-mandatory py-4 -mx-4 px-4 space-x-5">
             <div class="flex-shrink-0 w-5/6 snap-center">
-              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
-                <img src="image/Fie Commission.jpg" alt="Portrait Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="text-xl font-bold">Portrait Keluarga</h3>
-                  <p class="text-sm text-slate-300 mt-1">Digital painting dari foto keluarga klien.</p>
+              <div class="group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+                <img src="image/Fie Commission.jpg" alt="Portrait Art" class="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-mplus text-lg font-bold">Portrait Keluarga</h3>
+                  <p class="font-mplus text-sm">Digital painting dari foto keluarga klien.</p>
+                </div>
+              </div>
+          <!-- Artwork 2 -->
+          </div>
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+                <img src="image/Manyu.jpg" alt="Character Design" class="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-mplus text-lg font-bold">Character Design</h3>
+                  <p class="font-mplus text-sm">Desain karakter untuk game indie.</p>
+                </div>
+              </div>
+          </div>
+          <!-- Artwork 3 -->
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+                <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="aspect-[3/4] w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="font-mplus text-lg font-bold">Pemandangan Fantasi</h3>
+                  <p class="font-mplus text-sm">Ilustrasi buku fantasi.</p>
                 </div>
               </div>
             </div>
-
-            <!-- Artwork 2 -->
-            <div class="flex-shrink-0 w-5/6 snap-center">
-              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
-                <img src="image/Manyu.jpg" alt="Character Design" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="text-xl font-bold">Character Design</h3>
-                  <p class="text-sm text-slate-300 mt-1">Desain karakter untuk game indie.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Artwork 3 -->
-            <div class="flex-shrink-0 w-5/6 snap-center">
-              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
-                <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="text-xl font-bold">Pemandangan Fantasi</h3>
-                  <p class="text-sm text-slate-300 mt-1">Ilustrasi buku fantasi.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Artwork 4 -->
-            <div class="flex-shrink-0 w-5/6 snap-center">
-              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
-                <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="text-xl font-bold">Fashion Illustration</h3>
-                  <p class="text-sm text-slate-300 mt-1">Desain untuk brand fashion lokal.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Artwork 5 -->
-            <div class="flex-shrink-0 w-5/6 snap-center">
-              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
-                <img src="image/violet.jpg" alt="Abstract Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="text-xl font-bold">Seni Abstrak</h3>
-                  <p class="text-sm text-slate-300 mt-1">Karya personal dengan tema emosi.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Artwork 6 -->
-            <div class="flex-shrink-0 w-5/6 snap-center">
-              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
-                <img src="image/p_san.jpg" alt="Manga Style" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 class="text-xl font-bold">Gaya Manga</h3>
-                  <p class="text-sm text-slate-300 mt-1">Karakter manga untuk komik web.</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex-shrink-0 w-4"></div>
           </div>
         </div>
 
-        <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
-            <img src="image/Fie Commission.jpg" alt="Portrait Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-xl font-bold">Portrait Keluarga</h3>
-              <p class="text-sm text-slate-300 mt-1">Digital painting dari foto keluarga klien.</p>
+        <!-- Artwork 4,5,6 -->
+        <div class="hidden md:grid grid-cols-12 grid-rows-2 gap-4">
+          <div class="col-span-12 lg:col-span-7 row-span-2 group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+            <img src="image/Fie Commission.jpg" alt="Portrait Art" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="font-mplus text-2xl font-bold">Portrait Keluarga</h3>
+              <p class="font-mplus text-base">Digital painting dari foto keluarga klien.</p>
             </div>
           </div>
-          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
-            <img src="image/Manyu.jpg" alt="Character Design" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-xl font-bold">Character Design</h3>
-              <p class="text-sm text-slate-300 mt-1">Desain karakter untuk game indie.</p>
+          <div class="col-span-6 lg:col-span-5 row-span-1 group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+            <img src="image/Manyu.jpg" alt="Character Design" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="font-mplus text-xl font-bold">Character Design</h3>
+              <p class="font-mplus text-sm">Desain karakter untuk game indie.</p>
             </div>
           </div>
-          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
-            <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-xl font-bold">Pemandangan Fantasi</h3>
-              <p class="text-sm text-slate-300 mt-1">Ilustrasi buku fantasi.</p>
-            </div>
-          </div>
-          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
-            <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-xl font-bold">Fashion Illustration</h3>
-              <p class="text-sm text-slate-300 mt-1">Desain untuk brand fashion lokal.</p>
-            </div>
-          </div>
-          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
-            <img src="image/violet.jpg" alt="Abstract Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-xl font-bold">Seni Abstrak</h3>
-              <p class="text-sm text-slate-300 mt-1">Karya personal dengan tema emosi.</p>
-            </div>
-          </div>
-          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
-            <img src="image/p_san.jpg" alt="Manga Style" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-xl font-bold">Gaya Manga</h3>
-              <p class="text-sm text-slate-300 mt-1">Karakter manga untuk komik web.</p>
+          <div class="col-span-6 lg:col-span-5 row-span-1 group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+            <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="font-mplus text-xl font-bold">Pemandangan Fantasi</h3>
+              <p class="font-mplus text-sm">Ilustrasi buku fantasi.</p>
             </div>
           </div>
         </div>
+    
+        <div class="hidden md:grid grid-cols-12 gap-4 mt-4">
+            <div class="col-span-6 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+                <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-mplus text-xl font-bold">Fashion Illustration</h3>
+                </div>
+            </div>
+            <div class="col-span-6 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+                <img src="image/violet.jpg" alt="Abstract Art" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-mplus text-xl font-bold">Seni Abstrak</h3>
+                </div>
+            </div>
+            <div class="col-span-12 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black">
+                <img src="image/p_san.jpg" alt="Manga Style" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-mplus text-xl font-bold">Gaya Manga</h3>
+                </div>
+            </div>
+        </div>
+
 
         <div class="text-center mt-16">
-          <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
+          <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="font-mplus inline-flex items-center gap-3 bg-slate-900 text-white font-semibold px-8 py-4 hover:bg-indigo-600 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
             <span>Lihat Lebih Banyak Karya</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
             </svg>
           </a>
         </div>
-
       </div>
     </section>
 
