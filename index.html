@@ -10,6 +10,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+     <style>
+        html {
+          scroll-behavior: smooth;
+        }
+    </style>
+
     <style>
       .artwork-card:hover .artwork-overlay {
         opacity: 1;
@@ -31,198 +38,158 @@
         animation: fadeIn 0.6s ease forwards;
       }
     </style>
+
+    <style>
+      @keyframes ken-burns {
+        0% {
+          transform: scale(1.1) translate(0, 0);
+        }
+        100% {
+          transform: scale(1.25) translate(-2%, 2%);
+        }
+      }
+      .ken-burns {
+        animation: ken-burns 10s ease-in-out infinite alternate;
+      }
+    </style>
+    
   </head>
 
   <body class="font-sans bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    
+    <!-- Navigation, udah jadi satu sama menu mobile dah ditambah hamburger juga hehe-->
+    <nav x-data="{ isOpen: false }" class="bg-white/80 backdrop-blur-lg shadow-md sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-          <div class="flex items-center">
-            <a href="#" class="flex-shrink-0 flex items-center">
-              <i class="fas fa-palette text-2xl text-sky-400 mr-2"></i>
-              <span class="text-xl font-bold text-gray-800">eumi.ca</span>
-            </a>
-            <div class="hidden md:ml-10 md:flex md:space-x-8">
-              <a
-                href="#"
-                class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-sky-500 text-sm font-medium"
-                >Home</a
-              >
-              <a
-                href="#gallery"
-                class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-sky-500 text-sm font-medium"
-                >Gallery</a
-              >
-              <a
-                href="#price"
-                class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-sky-500 text-sm font-medium"
-                >Price</a
-              >
-
-              <a
-                href="#terms"
-                class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-sky-500 text-sm font-medium"
-                >Terms of Service</a
-              >
-            </div>
-          </div>
-          <div class="hidden md:ml-6 md:flex md:items-center">
-            <a
-              href="https://wa.me/6281234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button
-                class="bg-indigo-400 hover:bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300"
-                href="https://wa.me/6281225963780" target="_blank"
-              >
-                Pesan Sekarang
-              </button>
-            </a>
-          </div>
-          <div class="-mr-2 flex items-center md:hidden">
-            <button
-              type="button"
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
-              aria-expanded="false"
-              id="mobile-menu-button"
-            >
-              <span class="sr-only">Open main menu</span>
-              <svg
-                class="block h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+        <div class="flex justify-between items-center h-20">
+      
+          <div class="flex-shrink-0">
+            <a href="#" class="flex items-center gap-2">
+              <svg class="h-7 w-7 text-sky-500" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c0.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5C21 5.24 16.76 3 12 3zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9S8 9.67 8 10.5S7.33 12 6.5 12zm3-3C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5S11 5.67 11 6.5S10.33 8 9.5 8zm5 0C13.67 8 13 7.33 13 6.5S13.67 5 14.5 5S16 5.67 16 6.5S15.33 8 14.5 8zm3 3c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9S19 9.67 19 10.5S18.33 12 17.5 12z"/>
               </svg>
+              <span class="text-xl font-semibold text-slate-800">eumi.ca</span>
+            </a>
+          </div>
+
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Home</a>
+            <a href="#gallery" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Gallery</a>
+            <a href="#price" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Price</a>
+            <a href="#terms" class="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Terms</a>
+          </div>
+      
+          <div class="hidden md:flex items-center">
+            <a href="https://wa.me/6281225963780" target="_blank" class="bg-indigo-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              Pesan Sekarang
+            </a>
+          </div>
+
+          <div class="md:hidden flex items-center">
+            <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="sr-only">Buka menu utama</span>
+              <svg x-show="!isOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+              <svg x-show="isOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
         </div>
       </div>
 
-       <!-- Mobile menu perlu di fix-->
-      <div class="hidden md:hidden" id="mobile-menu">
-        <div class="pt-2 pb-3 space-y-1">
-          <a
-            href="#"
-            class="bg-purple-50 border-purple-500 text-purple-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-            >Home</a
-          >
-          <a
-            href="#portfolio"
-            class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-            >Portfolio</a
-          >
-          <a
-            href="#pricing"
-            class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-            >Harga</a
-          >
-          <a
-            href="#testimonials"
-            class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-            >Testimoni</a
-          >
-          <a
-            href="#contact"
-            class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-            >Kontak</a
-          >
-          <div class="mt-4 pl-3">
-            <button
-              class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium w-full transition duration-300"
-            >
-              Pesan Sekarang
-            </button>
-          </div>
+        <div x-show="isOpen" x-cloak
+          x-transition:enter="transition ease-out duration-300 transform"
+          x-transition:enter-start="opacity-0 -translate-y-4"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          x-transition:leave="transition ease-in duration-200 transform"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 -translate-y-4"
+          class="md:hidden absolute top-full inset-x-0 bg-white shadow-lg"
+          id="mobile-menu"
+        >
+        <div class="pt-4 pb-3 space-y-1">
+          <a href="#" @click="isOpen = false" class="block pl-3 pr-4 py-2 text-base font-medium text-indigo-700 bg-indigo-50 border-l-4 border-indigo-500">Home</a>
+          <a href="#gallery" @click="isOpen = false" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 border-l-4 border-transparent">Gallery</a>
+          <a href="#price" @click="isOpen = false" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 border-l-4 border-transparent">Price</a>
+          <a href="#terms" @click="isOpen = false" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 border-l-4 border-transparent">Terms</a>
+        </div>
+        <div class="pt-4 pb-3 border-t border-gray-200 px-4">
+          <a href="https://wa.me/6281225963780" target="_blank" class="w-full flex justify-center bg-indigo-600 text-white font-semibold px-5 py-3 rounded-lg hover:bg-indigo-700 transition-all shadow-md">
+            Pesan Sekarang
+          </a>
         </div>
       </div>
     </nav>
 
+       
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-sky-400 to-indigo-400 text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="md:flex md:items-center md:justify-between">
+      <div
+      class="relative min-h-screen w-full overflow-hidden text-white"
+      x-data="{ 
+        images: [ 
+          'image/Fie Commission.jpg', 
+          'image/Manyu.jpg', 
+          'image/Fluff hair sd.jpg', 
+          'image/Chibi Lality.jpg', 
+          'image/violet.jpg', 
+          'image/p_san.jpg' 
+        ], 
+        activeIndex: 0 
+      }" 
+      x-init="setInterval(() => { activeIndex = (activeIndex + 1) % images.length }, 5000)"
+>
+      <template x-for="(image, index) in images" :key="index">
+        <div
+          class="absolute inset-0 h-full w-full"
+          x-show="activeIndex === index"
+          x-transition:enter="transition-opacity ease-in-out duration-1000"
+          x-transition:leave="transition-opacity ease-in-out duration-1000"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+          <img :src="image" alt="Latar belakang karya seni" class="h-full w-full object-cover ken-burns" />
+        </div>
+      </template>
 
-          <div class="md:w-1/2 mb-10 md:mb-0">
-            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6">
-              Karya Seni Kustom Spesialmu
-            </h1>
-            <p class="text-xl text-indigo-100 mb-8">
-              Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.
-            </p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <a href="#gallery" class="bg-white text-sky-600 hover:bg-slate-100 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Lihat Portofolio
-              </a>
-              <a href="#price" class="bg-transparent border-2 border-white hover:bg-white hover:text-sky-600 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300">
-                Lihat Harga
-              </a>
-            </div>
+      <div class="absolute inset-0 bg-black/60"></div>
+
+      <div class="relative z-10 flex h-screen flex-col items-center justify-center p-8 text-center">
+        <div 
+          x-data="{ isLoaded: false }" 
+          x-init="setTimeout(() => { isLoaded = true }, 200)"
+          x-show="isLoaded" 
+          x-transition:enter="transition ease-out duration-1000" 
+          x-transition:enter-start="opacity-0 -translate-y-8" 
+          x-transition:enter-end="opacity-100 translate-y-0"
+        >
+          <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-r from-slate-100 to-white bg-clip-text text-transparent">
+            Karya Seni Kustom Spesialmu
+          </h1>
+      
+          <p class="text-lg sm:text-xl text-indigo-100/90 mb-8 max-w-xl mx-auto">
+            Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.
+          </p>
+      
+          <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <a href="#gallery" class="w-full sm:w-auto bg-white text-sky-700 hover:bg-slate-100 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105">
+              Lihat Portofolio
+            </a>
+            <a href="#price" class="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-sky-700 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 hover:scale-105">
+              Lihat Harga
+            </a>
           </div>
-
-          <div 
-            class="md:w-1/2"
-            x-data="{
-              images: [
-                'image/Fie Commission.jpg',
-                'image/Manyu.jpg',
-                'image/Fluff hair sd.jpg',
-                'image/Chibi Lality.jpg',
-                'image/violet.jpg',
-                'image/p_san.jpg'
-              ],
-              activeIndex: 0,
-              interval: null
-            }"
-            x-init="
-              interval = setInterval(() => { 
-                activeIndex = (activeIndex + 1) % images.length 
-              }, 3000)
-            "
-          >
-            <div class="relative">
-              <div class="absolute -top-5 -left-5 w-full h-full border-4 border-indigo-300/50 rounded-lg transform -rotate-2"></div>
-          
-              <div class="relative rounded-lg shadow-2xl overflow-hidden aspect-square">
-                <template x-for="(image, index) in images" :key="index">
-                  <img 
-                    :src="image" 
-                    alt="Contoh Karya Seni" 
-                    class="absolute inset-0 w-full h-full object-cover"
-                    x-show="activeIndex === index"
-                    x-transition:enter="transition-opacity ease-in-out duration-1000"
-                    x-transition:enter-start="opacity-0"
-                    x-transition:enter-end="opacity-100"
-                    x-transition:leave="transition-opacity ease-in-out duration-1000"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0"
-                  />
-                </template>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
+    </div>
+
+    
     </section>
 
     <!-- Portfolio Section -->
-    <section id="gallery" class="py-20 bg-slate-50">
+    <section id="gallery" class="py-20 bg-slate-50 overflow-hidden">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="text-center mb-16">
           <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-          Art Gallery
+            Art Gallery
           </h2>
           <p class="mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
             Berbagai jenis gambar yang telah dibuat sebelumnya.
@@ -230,83 +197,135 @@
           <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="md:hidden">
+
           <!-- Artwork 1 -->
+          <div class="flex overflow-x-auto snap-x snap-mandatory py-4 space-x-6">
+            <div class="flex-shrink-0 w-4"></div>
+
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
+                <img src="image/Fie Commission.jpg" alt="Portrait Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="text-xl font-bold">Portrait Keluarga</h3>
+                  <p class="text-sm text-slate-300 mt-1">Digital painting dari foto keluarga klien.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Artwork 2 -->
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
+                <img src="image/Manyu.jpg" alt="Character Design" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="text-xl font-bold">Character Design</h3>
+                  <p class="text-sm text-slate-300 mt-1">Desain karakter untuk game indie.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Artwork 3 -->
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
+                <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="text-xl font-bold">Pemandangan Fantasi</h3>
+                  <p class="text-sm text-slate-300 mt-1">Ilustrasi buku fantasi.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Artwork 4 -->
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
+                <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="text-xl font-bold">Fashion Illustration</h3>
+                  <p class="text-sm text-slate-300 mt-1">Desain untuk brand fashion lokal.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Artwork 5 -->
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
+                <img src="image/violet.jpg" alt="Abstract Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="text-xl font-bold">Seni Abstrak</h3>
+                  <p class="text-sm text-slate-300 mt-1">Karya personal dengan tema emosi.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Artwork 6 -->
+            <div class="flex-shrink-0 w-5/6 snap-center">
+              <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg">
+                <img src="image/p_san.jpg" alt="Manga Style" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 class="text-xl font-bold">Gaya Manga</h3>
+                  <p class="text-sm text-slate-300 mt-1">Karakter manga untuk komik web.</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-shrink-0 w-4"></div>
+          </div>
+        </div>
+
+        
+        <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
             <img src="image/Fie Commission.jpg" alt="Portrait Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 class="text-xl font-bold">Portrait Keluarga</h3>
               <p class="text-sm text-slate-300 mt-1">Digital painting dari foto keluarga klien.</p>
-              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 12 Mei 2023</span>
             </div>
           </div>
-
-          <!-- Artwork 2 -->
           <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
             <img src="image/Manyu.jpg" alt="Character Design" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 class="text-xl font-bold">Character Design</h3>
               <p class="text-sm text-slate-300 mt-1">Desain karakter untuk game indie.</p>
-              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 28 Juni 2023</span>
             </div>
           </div>
-
-
-          <!-- Artwork 3 -->
           <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
             <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 class="text-xl font-bold">Pemandangan Fantasi</h3>
               <p class="text-sm text-slate-300 mt-1">Ilustrasi buku fantasi.</p>
-              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 5 Juli 2023</span>
             </div>
           </div>
-
-          <!-- Artwork 4 -->
           <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
             <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 class="text-xl font-bold">Fashion Illustration</h3>
               <p class="text-sm text-slate-300 mt-1">Desain untuk brand fashion lokal.</p>
-              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 15 Agustus 2023</span>
             </div>
           </div>
-
-          <!-- Artwork 5 -->
           <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
             <img src="image/violet.jpg" alt="Abstract Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 class="text-xl font-bold">Seni Abstrak</h3>
               <p class="text-sm text-slate-300 mt-1">Karya personal dengan tema emosi.</p>
-              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 22 Agustus 2023</span>
             </div>
           </div>
-
-
-          <!-- Artwork 6 -->
           <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
             <img src="image/p_san.jpg" alt="Manga Style" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h3 class="text-xl font-bold">Gaya Manga</h3>
               <p class="text-sm text-slate-300 mt-1">Karakter manga untuk komik web.</p>
-              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 3 September 2023</span>
             </div>
           </div>
         </div>
 
-        <div class="text-center mt-12">
-          <a
-            href="https://www.instagram.com/eumi.ca"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300"
-            >
-              Lihat Lebih Banyak Karya
-            </button>
+        <div class="text-center mt-16">
+          <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-indigo-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
+            <span>Lihat Lebih Banyak Karya</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
           </a>
         </div>
+
       </div>
     </section>
 
@@ -495,7 +514,10 @@
             <h4 class="font-semibold text-slate-800">Temukan saya di:</h4>
             <div class="mt-4 flex flex-wrap gap-4">
               <a href="#" target="_blank" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-lg transition-colors">
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path></svg>
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01">
+                  </path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z">
+                  </path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path></svg>
                 <span>eumi.ca</span>
               </a>
               <a href="#" target="_blank" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-lg transition-colors">
