@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Eumica - Art Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -31,6 +32,7 @@
       }
     </style>
   </head>
+
   <body class="font-sans bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
@@ -57,6 +59,12 @@
                 class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-sky-500 text-sm font-medium"
                 >Price</a
               >
+
+              <a
+                href="#terms"
+                class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-sky-500 text-sm font-medium"
+                >Terms of Service</a
+              >
             </div>
           </div>
           <div class="hidden md:ml-6 md:flex md:items-center">
@@ -67,6 +75,7 @@
             >
               <button
                 class="bg-indigo-400 hover:bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300"
+                href="https://wa.me/6281225963780" target="_blank"
               >
                 Pesan Sekarang
               </button>
@@ -141,189 +150,146 @@
 
     <!-- Hero Section -->
     <section class="bg-gradient-to-r from-sky-400 to-indigo-400 text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="md:flex md:items-center md:justify-between">
-          <div class="md:w-1/2 mb-10 md:mb-0 animate-fadeIn">
-            <h1
-              class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6"
-            >
+
+          <div class="md:w-1/2 mb-10 md:mb-0">
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl mb-6">
               Karya Seni Kustom Spesialmu
             </h1>
-            <p class="text-xl text-purple-100 mb-8">
-              Ubah Ide atau kenangan menjadi karya seni abadi dengan sentuhan
-              profesional.
+            <p class="text-xl text-indigo-100 mb-8">
+              Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.
             </p>
-            <div
-              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
-            >
-              <a
-                href="#gallery"
-                class="bg-white text-sky-500 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-medium text-center transition duration-300"
-              >
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <a href="#gallery" class="bg-white text-sky-600 hover:bg-slate-100 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                 Lihat Portofolio
               </a>
-              <a
-                href="#price"
-                class="bg-transparent border-2 border-white hover:bg-white hover:text-sky-500 px-6 py-3 rounded-md text-lg font-medium text-center transition duration-300"
-              >
+              <a href="#price" class="bg-transparent border-2 border-white hover:bg-white hover:text-sky-600 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300">
                 Lihat Harga
               </a>
             </div>
           </div>
-          <div class="md:w-1/2 animate-fadeIn" style="animation-delay: 0.2s">
+
+          <div 
+            class="md:w-1/2"
+            x-data="{
+              images: [
+                'image/Fie Commission.jpg',
+                'image/Manyu.jpg',
+                'image/Fluff hair sd.jpg',
+                'image/Chibi Lality.jpg',
+                'image/violet.jpg',
+                'image/p_san.jpg'
+              ],
+              activeIndex: 0,
+              interval: null
+            }"
+            x-init="
+              interval = setInterval(() => { 
+                activeIndex = (activeIndex + 1) % images.length 
+              }, 3000)
+            "
+          >
             <div class="relative">
-              <div
-                class="absolute -top-6 -left-6 w-full h-full border-2 border-indigo-200 rounded-lg"
-              ></div>
-              <img
-                src="image/marin_f.jpg"
-                alt="Contoh Gambar"
-                class="relative rounded-lg shadow-2xl w-full h-auto"
-              />
+              <div class="absolute -top-5 -left-5 w-full h-full border-4 border-indigo-300/50 rounded-lg transform -rotate-2"></div>
+          
+              <div class="relative rounded-lg shadow-2xl overflow-hidden aspect-square">
+                <template x-for="(image, index) in images" :key="index">
+                  <img 
+                    :src="image" 
+                    alt="Contoh Karya Seni" 
+                    class="absolute inset-0 w-full h-full object-cover"
+                    x-show="activeIndex === index"
+                    x-transition:enter="transition-opacity ease-in-out duration-1000"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    x-transition:leave="transition-opacity ease-in-out duration-1000"
+                    x-transition:leave-start="opacity-100"
+                    x-transition:leave-end="opacity-0"
+                  />
+                </template>
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="gallery" class="py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Art Gallery
+          <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          Art Gallery
           </h2>
-          <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+          <p class="mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
             Berbagai jenis gambar yang telah dibuat sebelumnya.
           </p>
+          <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Artwork 1 -->
-          <div class="relative rounded-lg overflow-hidden artwork-card group">
-            <img
-              src="image/Fie Commission.jpg"
-              alt="Portrait Art"
-              class="w-full h-64 object-cover"
-            />
-            <div
-              class="artwork-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex flex-col justify-center items-center p-4"
-            >
-              <h3 class="text-white text-xl font-bold mb-2">
-                Portrait Keluarga
-              </h3>
-              <p class="text-gray-300 text-center mb-4">
-                Digital painting dari foto keluarga klien
-              </p>
-              <span class="text-purple-300 font-medium"
-                >Completed: 12 Mei 2023</span
-              >
+          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+            <img src="image/Fie Commission.jpg" alt="Portrait Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-xl font-bold">Portrait Keluarga</h3>
+              <p class="text-sm text-slate-300 mt-1">Digital painting dari foto keluarga klien.</p>
+              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 12 Mei 2023</span>
             </div>
           </div>
 
           <!-- Artwork 2 -->
-          <div class="relative rounded-lg overflow-hidden artwork-card group">
-            <img
-              src="image/Manyu.jpg"
-              alt="Character Design"
-              class="w-full h-64 object-cover"
-            />
-            <div
-              class="artwork-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex flex-col justify-center items-center p-4"
-            >
-              <h3 class="text-white text-xl font-bold mb-2">
-                Character Design
-              </h3>
-              <p class="text-gray-300 text-center mb-4">
-                Desain karakter untuk game indie
-              </p>
-              <span class="text-purple-300 font-medium"
-                >Completed: 28 Juni 2023</span
-              >
+          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+            <img src="image/Manyu.jpg" alt="Character Design" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-xl font-bold">Character Design</h3>
+              <p class="text-sm text-slate-300 mt-1">Desain karakter untuk game indie.</p>
+              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 28 Juni 2023</span>
             </div>
           </div>
 
+
           <!-- Artwork 3 -->
-          <div class="relative rounded-lg overflow-hidden artwork-card group">
-            <img
-              src="image/Fluff hair sd.jpg"
-              alt="Landscape Art"
-              class="w-full h-64 object-cover"
-            />
-            <div
-              class="artwork-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex flex-col justify-center items-center p-4"
-            >
-              <h3 class="text-white text-xl font-bold mb-2">
-                Pemandangan Fantasi
-              </h3>
-              <p class="text-gray-300 text-center mb-4">
-                Ilustrasi buku fantasi
-              </p>
-              <span class="text-purple-300 font-medium"
-                >Completed: 5 Juli 2023</span
-              >
+          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+            <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-xl font-bold">Pemandangan Fantasi</h3>
+              <p class="text-sm text-slate-300 mt-1">Ilustrasi buku fantasi.</p>
+              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 5 Juli 2023</span>
             </div>
           </div>
 
           <!-- Artwork 4 -->
-          <div class="relative rounded-lg overflow-hidden artwork-card group">
-            <img
-              src="image/Chibi Lality.jpg"
-              alt="Fashion Illustration"
-              class="w-full h-64 object-cover"
-            />
-            <div
-              class="artwork-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex flex-col justify-center items-center p-4"
-            >
-              <h3 class="text-white text-xl font-bold mb-2">
-                Fashion Illustration
-              </h3>
-              <p class="text-gray-300 text-center mb-4">
-                Desain untuk brand fashion lokal
-              </p>
-              <span class="text-purple-300 font-medium"
-                >Completed: 15 Agustus 2023</span
-              >
+          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+            <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-xl font-bold">Fashion Illustration</h3>
+              <p class="text-sm text-slate-300 mt-1">Desain untuk brand fashion lokal.</p>
+              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 15 Agustus 2023</span>
             </div>
           </div>
 
           <!-- Artwork 5 -->
-          <div class="relative rounded-lg overflow-hidden artwork-card group">
-            <img
-              src="image/violet.jpg"
-              alt="Abstract Art"
-              class="w-full h-64 object-cover"
-            />
-            <div
-              class="artwork-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex flex-col justify-center items-center p-4"
-            >
-              <h3 class="text-white text-xl font-bold mb-2">Seni Abstrak</h3>
-              <p class="text-gray-300 text-center mb-4">
-                Karya personal dengan tema emosi
-              </p>
-              <span class="text-purple-300 font-medium"
-                >Completed: 22 Agustus 2023</span
-              >
+          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+            <img src="image/violet.jpg" alt="Abstract Art" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-xl font-bold">Seni Abstrak</h3>
+              <p class="text-sm text-slate-300 mt-1">Karya personal dengan tema emosi.</p>
+              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 22 Agustus 2023</span>
             </div>
           </div>
 
+
           <!-- Artwork 6 -->
-          <div class="relative rounded-lg overflow-hidden artwork-card group">
-            <img
-              src="image/p_san.jpg"
-              alt="Manga Style"
-              class="w-full h-64 object-cover"
-            />
-            <div
-              class="artwork-overlay absolute inset-0 bg-black bg-opacity-70 opacity-0 flex flex-col justify-center items-center p-4"
-            >
-              <h3 class="text-white text-xl font-bold mb-2">Gaya Manga</h3>
-              <p class="text-gray-300 text-center mb-4">
-                Karakter manga untuk komik web
-              </p>
-              <span class="text-purple-300 font-medium"
-                >Completed: 3 September 2023</span
-              >
+          <div class="group relative block w-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
+            <img src="image/p_san.jpg" alt="Manga Style" class="h-96 w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-xl font-bold">Gaya Manga</h3>
+              <p class="text-sm text-slate-300 mt-1">Karakter manga untuk komik web.</p>
+              <span class="mt-4 inline-block text-xs font-semibold text-indigo-300">Selesai: 3 September 2023</span>
             </div>
           </div>
         </div>
@@ -345,82 +311,208 @@
     </section>
 
     <!-- Price Section -->
-    <section id="price"
-      class="bg-gradient-to-r from-sky-400 to-teal-300 text-white"
-    >
-      <div
-        class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 p-8 md:p-16 max-w-7xl max-w-none bg-[#FAF6F0] text-gray-800"
-      >
-        <!-- Left side Image -->
-        <div
-          class="flex-shrink-0 w-full md:w-1/2 max-w-md rounded-lg overflow-hidden shadow-lg"
-        >
-          <img
-            src="image/p_san.jpg"
-            alt="Anime-style digital character art portrait of a girl with black hair, green eyes, and a stylish black outfit with a choker necklace, soft lighting"
-            class="w-full h-auto object-cover"
-            onerror="this.style.display='none'"
-          />
+    <section id="price" class="py-20 bg-gradient-to-b from-slate-50 to-slate-200">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Pilih Paket Karyamu
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
+            Tersedia berbagai pilihan untuk mewujudkan idemu menjadi karya seni yang nyata.
+          </p>
+          <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
         </div>
 
-        <!-- Right side Commission Info -->
-        <div class="w-full md:w-3/5 max-w-lg font-sans">
-          <h1 class="text-5xl font-serif font-bold text-center mb-10 tracking-wider">
-            COMMISSION OPEN
-          </h1>
-          
-          <div class="flex justify-around text-center mb-12">
-            <div>
-              <p class="text-3xl font-serif font-bold">$10</p>
-              <p class="text-sm uppercase tracking-widest mt-1">All Size<br>Sketch</p>
-            </div>
-            <div>
-              <p class="text-3xl font-serif font-bold">$15</p>
-              <p class="text-sm uppercase tracking-widest mt-1">Headshot</p>
-            </div>
-            <div>
-              <p class="text-3xl font-serif font-bold">$25</p>
-              <p class="text-sm uppercase tracking-widest mt-1">Bust Up</p>
-            </div>
-           <div>
-             <p class="text-3xl font-serif font-bold">$30</p>
-             <p class="text-sm uppercase tracking-widest mt-1">Half Body</p>
-           </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div class="bg-white rounded-2xl shadow-lg p-8 text-center flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">All Size Sketch</h3>
+            <p class="text-5xl font-bold text-slate-900 mb-6">$10</p>
+            <p class="text-slate-500 text-sm mb-8 flex-grow">Sketsa hitam putih untuk semua ukuran, cocok untuk konsep awal.</p>
+            <a href="https://wa.me/6281225963780" target="_blank" class="mt-auto bg-slate-200 text-slate-700 font-semibold py-3 rounded-lg hover:bg-slate-300 transition-colors">Pesan Sekarang</a>
           </div>
 
-          <div
-            class="flex flex-col md:flex-row justify-around gap-10 md:gap-20 text-base md:pl-4"
-          >
-            <div>
-              <h2 class="text-xl font-semibold mb-3">DO:</h2>
-              <ul
-                class="list-disc list-inside space-y-1 font-light max-w-xs md:max-w-none"
-              >
-                <li>Chara only</li>
-                <li>Specialize on female</li>
-                <li>Your Chara reference</li>
-                <li>Light Fan Service</li>
-              </ul>
-            </div>
-            <div>
-              <h2 class="text-xl font-semibold mb-3">DON’T:</h2>
-              <ul
-                class="list-disc list-inside space-y-1 font-light max-w-xs md:max-w-none"
-              >
-                <li>BL</li>
-                <li>Furry</li>
-                <li>Mecha</li>
-                <li>NSFW</li>
-                <li>Realism</li>
-                <li>Abnormal Proportion</li>
-              </ul>
-            </div>
+          <div class="bg-white rounded-2xl shadow-lg p-8 text-center flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Headshot</h3>
+            <p class="text-5xl font-bold text-slate-900 mb-6">$15</p>
+            <p class="text-slate-500 text-sm mb-8 flex-grow">Gambar berwarna dari kepala hingga bahu, ideal untuk foto profil.</p>
+            <a href="https://wa.me/6281225963780" target="_blank" class="mt-auto bg-slate-200 text-slate-700 font-semibold py-3 rounded-lg hover:bg-slate-300 transition-colors">Pesan Sekarang</a>
           </div>
+
+          <div class="relative bg-indigo-600 text-white rounded-2xl shadow-xl p-8 text-center flex flex-col ring-4 ring-indigo-300 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <span class="absolute top-0 right-4 -mt-3 bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">BEST VALUE</span>
+            <h3 class="text-xl font-semibold mb-2">Bust Up</h3>
+            <p class="text-5xl font-bold mb-6">$25</p>
+            <p class="text-indigo-200 text-sm mb-8 flex-grow">Gambar berwarna dari kepala hingga dada, detail lebih banyak.</p>
+            <a href="https://wa.me/6281225963780" target="_blank" class="mt-auto bg-white text-indigo-600 font-semibold py-3 rounded-lg hover:bg-indigo-100 transition-colors">Pesan Sekarang</a>
+          </div>
+      
+          <div class="bg-white rounded-2xl shadow-lg p-8 text-center flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Half Body</h3>
+            <p class="text-5xl font-bold text-slate-900 mb-6">$30</p>
+            <p class="text-slate-500 text-sm mb-8 flex-grow">Gambar berwarna dari kepala hingga pinggang dengan pose.</p>
+            <a href="https://wa.me/6281225963780" target="_blank" class="mt-auto bg-slate-200 text-slate-700 font-semibold py-3 rounded-lg hover:bg-slate-300 transition-colors">Pesan Sekarang</a>
+          </div>
+
         </div>
-        
+
+          <div class="mt-20 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      
+          <div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 text-center md:text-left">DOs ✅</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span class="text-slate-700">Karakter saja (Chara only)</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span class="text-slate-700">Spesialisasi karakter wanita</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span class="text-slate-700">Menggambar berdasarkan referensi Anda</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span class="text-slate-700">Fan Service ringan</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-bold text-slate-800 mb-4 text-center md:text-left">DON'Ts ❌</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="text-slate-700">BL (Boys' Love)</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="text-slate-700">Furry</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="text-slate-700">Mecha</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="text-slate-700">NSFW</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="text-slate-700">Realisme</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <span class="text-slate-700">Proporsi tidak normal</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </section>
 
+    <!-- term Section -->
+    <section id="terms" class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Syarat & Ketentuan
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
+            Beberapa hal yang perlu diperhatikan sebelum kita memulai kerjasama.
+          </p>
+          <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden md:flex">
+      
+          <div class="md:w-1/3">
+            <img src="image/p_san.jpg" alt="Character sketch for terms of service" class="h-full w-full object-cover">
+          </div>
+
+          <!--hal hal section -->
+          <div class="md:w-2/3 p-8 md:p-12">
+            <ul class="mt-8 space-y-5 text-slate-700">
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <span class="font-semibold text-slate-800">$10</span> untuk karakter tambahan (maksimal 1).
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h22.5" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  Durasi pengerjaan <span class="font-semibold text-slate-800">3-7 Hari</span>.
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043 5.043a15.998 15.998 0 01-3.388-1.622m-7.5 0a15.998 15.998 0 003.388 1.622m7.5 0a15.998 15.998 0 01-3.388 1.622m0-13.5a15.998 15.998 0 00-3.388 1.622m7.5 0a15.998 15.998 0 013.388 1.622" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  Gratis <span class="font-semibold text-slate-800">2x revisi sketsa</span>, revisi selanjutnya dikenakan biaya <span class="font-semibold text-slate-800">$5</span>.
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 21.75z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  Pembayaran penuh (<span class="font-semibold text-slate-800">PayPal</span>) setelah sketsa disetujui.
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0">
+                  <svg class="w-6 h-6 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  Background detail <span class="font-semibold text-slate-800">+$5</span>, background simpel gratis.
+                </div>
+              </li>
+            </ul>
+
+            <hr class="my-10 border-slate-200">
+
+            <h4 class="font-semibold text-slate-800">Temukan saya di:</h4>
+            <div class="mt-4 flex flex-wrap gap-4">
+              <a href="#" target="_blank" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-lg transition-colors">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"></path></svg>
+                <span>eumi.ca</span>
+              </a>
+              <a href="#" target="_blank" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-lg transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-4.7 0-7.1 2.5-8.7 6.5z"></path></svg>
+                <span>Eumica</span>
+              </a>
+              <a href="#" target="_blank" class="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-4 py-2 rounded-lg transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.49-1.74.85-2.7 1.04-.78-.84-1.9-1.36-3.14-1.36-2.38 0-4.3 1.92-4.3 4.3 0 .34.04.67.11.98-3.57-.18-6.73-1.89-8.85-4.48-.37.63-.58 1.37-.58 2.15 0 1.49.76 2.81 1.91 3.58-.7-.02-1.37-.21-1.95-.54v.05c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 01-1.94.07 4.3 4.3 0 004 2.98 8.63 8.63 0 01-5.33 1.84c-.35 0-.69-.02-1.03-.06A12.32 12.32 0 007.82 18c7.16 0 11.07-5.93 11.07-11.07 0-.17 0-.34-.01-.51.76-.55 1.42-1.24 1.95-2.02z"></path></svg>
+                <span>AliceSweetie5</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
     
   </body>
 </html>
