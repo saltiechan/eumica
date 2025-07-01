@@ -456,14 +456,14 @@
         [x-cloak] { display: none !important; }
     </style>
     
+    
 
   </head>
   
-
   
     
     <!-- Navigation, udah jadi satu sama menu mobile dah ditambah hamburger juga hehe-->
-<section class="relative min-h-screen w-full overflow-hidden bg-gray-800 text-white">  
+    <section class="relative min-h-screen w-full overflow-hidden bg-gray-800 text-white">  
 
     <div class="absolute inset-0" x-data="{ images:  
     [ 'image/Fie Commission.jpg',
@@ -482,14 +482,43 @@
 
     <nav x-data="{ isOpen: false, scrolled: false }" @scroll.window="scrolled = (window.scrollY > 50)" class="relative z-40 h-full w-full">
         
-        <div class="md:hidden flex items-center justify-end p-4">
-            <button @click="isOpen = !isOpen" type="button" class="relative z-50 mt-4 mr-2 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow-xl ring-1 ring-black/5 backdrop-blur-md">
+        <div x-show="scrolled" x-transition class="md:hidden fixed top-4 right-4 z-50">
+            <button @click="isOpen = !isOpen" type="button" class="relative inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow-xl ring-1 ring-black/5 backdrop-blur-md">
                 <span class="sr-only">Buka Menu</span>
                 <svg x-show="!isOpen" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
                 <svg x-show="isOpen" x-cloak class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
         
+        <div x-show="isOpen" x-cloak>
+            <div x-show="isOpen" x-transition.opacity.duration.300ms class="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm" @click="isOpen = false"></div>
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 -translate-y-full" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-300 transform" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-full" class="md:hidden fixed inset-x-0 top-0 z-40 p-4">
+                <div class="space-y-3 rounded-2xl bg-white/95 p-4 ring-1 ring-black/5 backdrop-blur-lg mt-20">
+                    <a href="#" @click="isOpen = false" class="flex items-center justify-center gap-3 rounded-lg bg-indigo-100 px-4 py-3 text-base font-semibold text-indigo-700">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd" /></svg>
+                        <span>Home</span>
+                    </a>
+                    <a href="#gallery" @click="isOpen = false" class="flex items-center justify-center gap-3 rounded-lg bg-slate-50 px-4 py-3 text-base font-semibold text-gray-700 hover:bg-slate-100">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M3 3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H3Zm11.586 2.586a1.5 1.5 0 0 1 2.122 0l.707.707a1.5 1.5 0 0 1 0 2.122L15.364 12.5l-2.121-2.121 2.343-2.343Z M5 12.5a1.5 1.5 0 0 1 1.06-.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3A1.5 1.5 0 0 1 5 12.5Z" /></svg>
+                        <span>Gallery</span>
+                    </a>
+                    <a href="#price" @click="isOpen = false" class="flex items-center justify-center gap-3 rounded-lg bg-slate-50 px-4 py-3 text-base font-semibold text-gray-700 hover:bg-slate-100">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M10.75 10.843a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM9.25 5a.75.75 0 0 0 0 1.5h.01a.75.75 0 0 0 0-1.5H9.25ZM11 6.25a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM5 6.25a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01A.75.75 0 0 1 5 6.25Zm3.25.75a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM6.25 8a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01A.75.75 0 0 1 6.25 8Zm3.5 0a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75Zm.75 2.5a.75.75 0 0 0-1.5 0v.01a.75.75 0 0 0 1.5 0v-.01ZM6.25 11a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5h-.01a.75.75 0 0 1-.75-.75ZM4.22 13.78a.75.75 0 0 0 0 1.06l1.06 1.06a.75.75 0 0 0 1.06 0l1.06-1.06a.75.75 0 0 0-1.06-1.06L5.28 14.84a.75.75 0 0 0-1.06.02Z" /></svg>
+                        <span>Price</span>
+                    </a>
+                    <a href="#terms" @click="isOpen = false" class="flex items-center justify-center gap-3 rounded-lg bg-slate-50 px-4 py-3 text-base font-semibold text-gray-700 hover:bg-slate-100">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4Zm4.5 5.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0v-5Zm3.5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-3.5 2a.5.5 0 0 0-1 0v2a.5.5 0 0 0 1 0v-2Zm3.5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z" clip-rule="evenodd" /></svg>
+                        <span>Terms</span>
+                    </a>
+                    <div class="!mt-4">
+                        <a href="https://wa.me/6281225963780" target="_blank" class="block w-full rounded-lg bg-indigo-600 px-4 py-3 text-center text-lg font-bold text-white shadow-lg transition hover:bg-indigo-700 hover:-translate-y-0.5">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="hidden md:block">
             <div x-show="!scrolled" x-transition>
                 <a href="#" class="nav-panel absolute top-8 left-8 flex items-center gap-3 rounded-lg bg-white p-4 pr-6 text-slate-800 shadow-xl ring-2 ring-black" style="transform: rotate(-3.5deg);">
@@ -501,7 +530,6 @@
                     <a href="#price" class="nav-panel block rounded-lg bg-white px-10 py-4 text-xl font-bold text-gray-700 shadow-xl ring-2 ring-black" style="transform: rotate(-2.5deg);">Price</a>
                     <a href="#terms" class="nav-panel block rounded-lg bg-white px-10 py-4 text-xl font-bold text-gray-700 shadow-xl ring-2 ring-black" style="transform: rotate(2deg);">Terms</a>
                 </div>
-                
                 <a href="https://wa.me/6281225963780" target="_blank" class="nav-panel absolute bottom-10 right-10 rounded-lg bg-indigo-600 px-8 py-5 text-2xl font-extrabold text-white shadow-2xl ring-2 ring-black" style="transform: rotate(-4deg);">Pesan Sekarang!</a>
             </div>
 
@@ -520,21 +548,6 @@
                 </div>
             </div>
         </div>
-
-        <div x-show="isOpen" x-cloak>
-            <div x-show="isOpen" x-transition.opacity.duration.300ms class="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm" @click="isOpen = false"></div>
-            <div x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition ease-in duration-300 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full" class="md:hidden fixed inset-x-0 bottom-0 z-50 p-4">
-                <div class="space-y-4 rounded-3xl bg-white/95 p-5 ring-2 ring-black backdrop-blur-lg">
-                    <a href="#" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-indigo-100 py-4 text-center text-xl font-bold text-indigo-700">Home</a>
-                    <a href="#gallery" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-slate-50 py-4 text-center text-xl font-bold text-gray-700">Gallery</a>
-                    <a href="#price" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-slate-50 py-4 text-center text-xl font-bold text-gray-700">Price</a>
-                    <a href="#terms" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-slate-50 py-4 text-center text-xl font-bold text-gray-700">Terms</a>
-                    <div class="!mt-6 border-t pt-5">
-                        <a href="https://wa.me/6281225963780" target="_blank" class="block w-full rounded-2xl bg-indigo-600 py-5 text-center text-2xl font-extrabold text-white shadow-lg">Pesan Sekarang</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </nav>
 
     <div class="relative z-20 flex h-screen flex-col items-center justify-center p-8 text-center">  
@@ -548,7 +561,8 @@
             </div>  
         </div>  
     </div>  
-</section>
+    </section>
+
 
     <!-- Portfolio Section -->
     <section 
@@ -578,7 +592,7 @@
                         </div>
                     </div>
                     <div class="col-span-6 lg:col-span-5 row-span-1 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/Manyu.jpg" alt="Character Design" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+                        <img src="image/p_san.jpg" alt="Character Design" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
                         <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h3 class="font-mplus text-xl font-bold">Character Design</h3>
                         </div>
@@ -599,13 +613,13 @@
                         </div>
                     </div>
                     <div class="col-span-6 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/violet.jpg" alt="Abstract Art" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+                        <img src="image/Ellen Cuy 4 5.png" alt="Abstract Art" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
                         <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h3 class="font-mplus text-xl font-bold">Seni Abstrak</h3>
                         </div>
                     </div>
                     <div class="col-span-12 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/p_san.jpg" alt="Manga Style" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
+                        <img src="image/Summer 2022.png" alt="Manga Style" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
                         <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h3 class="font-mplus text-xl font-bold">Gaya Manga</h3>
                         </div>
@@ -851,6 +865,7 @@
 
     <!-- term Section -->
     <section id="terms" class="relative py-20 md:py-32 bg-slate-900 overflow-hidden">
+        
         <div class="absolute inset-0 bg-repeat bg-center opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/gplay.png'); background-size: 40px 40px;"></div>
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900/50"></div>
         <div class="absolute inset-0 opacity-10 bg-repeat" style="background-image: url('image/WASHI.png');"></div>
@@ -859,102 +874,77 @@
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
         
 
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6 lg:gap-8 h-[85vh]">
+        
+        <div class="md:col-span-2 row-span-1 p-6 flex flex-col items-center justify-center bg-white border-4 border-black shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter text-slate-900 drop-shadow-lg text-center">
+                Syarat & Ketentuan
+            </h2>
+            <p class="text-lg text-slate-600 mt-2 max-w-xl mx-auto text-center">
+                Hal penting sebelum kita memulai kerjasama.
+            </p>
+            <div class="mt-4 w-20 h-1 bg-indigo-500 rounded-full"></div>
+        </div>
 
-            <div class="text-center mb-16 md:mb-24">
-                <h2 class="font-mplus text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter text-white drop-shadow-lg">
-                    Syarat & Ketentuan
-                </h2>
-                <p class="text-lg sm:text-xl text-slate-300/80 mt-4 max-w-2xl mx-auto">
-                    Beberapa hal yang perlu diperhatikan sebelum kita memulai kerjasama.
-                </p>
-                <div class="mt-8 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+        <div class="row-span-1 md:row-span-3 bg-slate-700 border-4 border-white shadow-2xl overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-300">
+            <img src="image/Fluff hair sd.jpg" alt="Character sketch" class="h-full w-full object-cover object-center scale-110 hover:scale-100 transition-transform duration-500">
+        </div>
+
+        <div class="relative md:col-span-2 row-span-2 p-8 sm:p-10 bg-white border-4 border-black shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-300 overflow-hidden">
+            
+            <div class="absolute inset-0 opacity-20 bg-repeat" style="background-image: url('https://www.transparenttextures.com/patterns/dot-grid.png');"></div>
+            
+            <div class="absolute -top-1 -left-1 w-16 h-16 text-indigo-200">
+                <svg fill="currentColor" viewBox="0 0 200 200"><path d="M 100,0 A 100,100 0 0,1 200,100 V 80 A 80,80 0 0,0 120,0 Z"></path></svg>
+            </div>
+            <div class="absolute -top-1 -right-1 w-16 h-16 text-indigo-200 transform rotate-90">
+                <svg fill="currentColor" viewBox="0 0 200 200"><path d="M 100,0 A 100,100 0 0,1 200,100 V 80 A 80,80 0 0,0 120,0 Z"></path></svg>
+            </div>
+            <div class="absolute -bottom-1 -left-1 w-16 h-16 text-indigo-200 transform -rotate-90">
+                <svg fill="currentColor" viewBox="0 0 200 200"><path d="M 100,0 A 100,100 0 0,1 200,100 V 80 A 80,80 0 0,0 120,0 Z"></path></svg>
+            </div>
+            <div class="absolute -bottom-1 -right-1 w-16 h-16 text-indigo-200 transform rotate-180">
+                <svg fill="currentColor" viewBox="0 0 200 200"><path d="M 100,0 A 100,100 0 0,1 200,100 V 80 A 80,80 0 0,0 120,0 Z"></path></svg>
             </div>
 
-            <div class="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-0">
+            <div class="relative z-10">
+                <ul class="space-y-5 text-slate-700">
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                        <div class="ml-4">Biaya tambahan <span class="font-semibold text-slate-900">$10</span> untuk setiap karakter tambahan (maks. 1).</div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h22.5" /></svg></div>
+                        <div class="ml-4">Durasi pengerjaan standar adalah <span class="font-semibold text-slate-900">3-7 Hari</span>.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043 5.043a15.998 15.998 0 01-3.388-1.622m-7.5 0a15.998 15.998 0 003.388 1.622m7.5 0a15.998 15.998 0 01-3.388 1.622m0-13.5a15.998 15.998 0 00-3.388 1.622m7.5 0a15.998 15.998 0 013.388 1.622" /></svg></div>
+                        <div class="ml-4">Gratis <span class="font-semibold text-slate-900">2x revisi pada tahap sketsa</span>. Revisi selanjutnya dikenakan biaya <span class="font-semibold text-slate-900">$5</span>.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 21.75z" /></svg></div>
+                        <div class="ml-4">Pembayaran penuh via <span class="font-semibold text-slate-900">PayPal</span> dilakukan setelah sketsa disetujui.</div>
+                    </li>
+                </ul>
 
-                <div class="md:col-span-2 relative min-h-[300px] md:min-h-0">
-                    <div class="absolute inset-0 bg-slate-800 transform -skew-x-6 shadow-2xl border-4 border-white overflow-hidden">
-                        <img src="image/violet.jpg" alt="Character sketch for terms of service" class="h-full w-full object-cover transform skew-x-6 scale-125 transition-transform duration-500 hover:scale-150">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    </div>
+                <div class="flex items-center text-center my-6">
+                    <div class="flex-grow border-t border-slate-300"></div>
+                    <span class="flex-shrink mx-4 text-indigo-300 text-2xl">&diams;</span>
+                    <div class="flex-grow border-t border-slate-300"></div>
                 </div>
 
-                <div class="md:col-span-3 relative">
-                    <div class="bg-white p-8 sm:p-10 md:p-12 shadow-2xl border-4 border-slate-900 transform md:skew-x-3 md:-ml-12 z-10">
-                        <ul class="space-y-6 text-slate-700">
-                            <li class="flex items-start">
-                                <div class="flex-shrink-0 pt-1">
-                                    <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    <span class="font-semibold text-slate-900">$10</span> untuk karakter tambahan (maksimal 1).
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="flex-shrink-0 pt-1">
-                                    <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h22.5" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                  Durasi pengerjaan <span class="font-semibold text-slate-900">3-7 Hari</span>.
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="flex-shrink-0 pt-1">
-                                    <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043 5.043a15.998 15.998 0 01-3.388-1.622m-7.5 0a15.998 15.998 0 003.388 1.622m7.5 0a15.998 15.998 0 01-3.388 1.622m0-13.5a15.998 15.998 0 00-3.388 1.622m7.5 0a15.998 15.998 0 013.388 1.622" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    Gratis <span class="font-semibold text-slate-900">2x revisi sketsa</span>, revisi selanjutnya dikenakan biaya <span class="font-semibold text-slate-900">$5</span>.
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="flex-shrink-0 pt-1">
-                                    <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 21.75z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    Pembayaran penuh (<span class="font-semibold text-slate-900">PayPal</span>) setelah sketsa disetujui.
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <div class="flex-shrink-0 pt-1">
-                                    <svg class="w-6 h-6 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                                    </svg>
-                                </div>
-                                <div class="ml-4">
-                                    Background detail <span class="font-semibold text-slate-900">+$5</span>, background simpel gratis.
-                                </div>
-                            </li>
-                        </ul>
-
-                        <hr class="my-8 border-slate-200">
-
-                        <div>
-                            <h4 class="font-semibold text-slate-900 mb-4">Temukan saya di:</h4>
-                            <div class="flex flex-wrap gap-3">
-                                <a href="http://instagram.com/eumi.ca" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 shadow-md">
-                                    <span>Instagram</span>
-                                </a>
-                                <a href="https://www.pixiv.net/users/88637041" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 shadow-md">
-                                    <span>Pixiv</span>
-                                </a>
-                                <a href="http://twitter.com/AliceSweetie5" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 shadow-md">
-                                    <span>Twitter</span>
-                                </a>
-                            </div>
-                        </div>
+                <div>
+                    <h4 class="font-semibold text-slate-900 mb-3">Temukan saya di:</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="http://instagram.com/eumi.ca" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 shadow-md"><span>Instagram</span></a>
+                        <a href="https://www.pixiv.net/users/88637041" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 shadow-md"><span>Pixiv</span></a>
+                        <a href="http://twitter.com/AliceSweetie5" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-semibold px-4 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 shadow-md"><span>Twitter</span></a>
                     </div>
                 </div>
             </div>
         </div>
+        
+    </div>
     </section>
     
   </body>
