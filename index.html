@@ -427,77 +427,128 @@
     }
 </style>
 
+  <style>
+        /* Menggunakan Font Poppins */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Custom styles for manga panels */
+        .nav-panel {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-panel:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        
+        
+        .manga-bubble:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .manga-bubble {
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+        
+        /* Cloak to prevent flash of unstyled content */
+        [x-cloak] { display: none !important; }
+    </style>
     
 
   </head>
   
- 
-  <body class="font-sans bg-gray-50">
-  
+
   
     
     <!-- Navigation, udah jadi satu sama menu mobile dah ditambah hamburger juga hehe-->
-    <section class="relative min-h-screen w-full overflow-hidden bg-gray-800 text-white scroll-snap-align-start">
+<section class="relative min-h-screen w-full overflow-hidden bg-gray-800 text-white">  
 
-        <div class="absolute inset-0" x-data="{ images:
-        [ 'image/Fie Commission.jpg',
+    <div class="absolute inset-0" x-data="{ images:  
+    [ 'image/Fie Commission.jpg',
           'image/Soulmate Joke.jpg',
           'image/Fluff hair sd.jpg',
           'image/Chibi Lality.jpg',
           'image/Yoimiya No Shade.jpg',
-          'image/p_san.jpg' ], activeIndex: 0 }" x-init="setInterval(() => { activeIndex = (activeIndex + 1) % images.length }, 5000)">
-        <template x-for="(image, index) in images" :key="index">
-            <div class="absolute inset-0 h-full w-full" x-show="activeIndex === index" x-transition:enter="transition-opacity ease-in-out duration-1000" x-transition:leave="transition-opacity ease-in-out duration-1000" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
-                <img :src="image" alt="Latar belakang" class="h-full w-full object-cover ken-burns" />
-            </div>
-        </template>
-        <div class="absolute inset-0 bg-black/60"></div>
-    </div>
+          'image/p_san.jpg' ], activeIndex: 0 }" x-init="setInterval(() => { activeIndex = (activeIndex + 1) % images.length }, 5000)">  
+        <template x-for="(image, index) in images" :key="index">  
+            <div class="absolute inset-0 h-full w-full" x-show="activeIndex === index" x-transition:enter="transition-opacity ease-in-out duration-1000" x-transition:leave="transition-opacity ease-in-out duration-1000" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>  
+                <img :src="image" alt="Latar belakang karya seni" class="h-full w-full object-cover ken-burns" />  
+            </div>  
+        </template>  
+        <div class="absolute inset-0 bg-black/60"></div>  
+    </div>  
 
-    <nav
-        x-data="{ isOpen: false, scrolled: false }"
-        @scroll.window="scrolled = (window.scrollY > 10)"
-        :class="scrolled ? 'fixed bg-white/90 backdrop-blur-lg shadow-md' : 'absolute'"
-        :style="scrolled ? 'padding-top: 0.5rem; padding-bottom: 0.5rem;' : ''"
-        class="top-0 left-0 right-0 z-50 p-4 transition-all duration-300"
-    >
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="#" class="nav-bubble text-slate-800 gap-2 pr-5">
-                        <svg class="h-7 w-7 text-sky-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c0.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5C21 5.24 16.76 3 12 3zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9S8 9.67 8 10.5S7.33 12 6.5 12zm3-3C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5S11 5.67 11 6.5S10.33 8 9.5 8zm5 0C13.67 8 13 7.33 13 6.5S13.67 5 14.5 5S16 5.67 16 6.5S15.33 8 14.5 8zm3 3c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9S19 9.67 19 10.5S18.33 12 17.5 12z"/></svg>
-                        <span class="text-xl font-bold">eumi.ca</span>
+    <nav x-data="{ isOpen: false, scrolled: false }" @scroll.window="scrolled = (window.scrollY > 50)" class="relative z-40 h-full w-full">
+        
+        <div class="md:hidden flex items-center justify-end p-4">
+            <button @click="isOpen = !isOpen" type="button" class="relative z-50 mt-4 mr-2 inline-flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow-xl ring-1 ring-black/5 backdrop-blur-md">
+                <span class="sr-only">Buka Menu</span>
+                <svg x-show="!isOpen" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                <svg x-show="isOpen" x-cloak class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+        
+        <div class="hidden md:block">
+            <div x-show="!scrolled" x-transition>
+                <a href="#" class="nav-panel absolute top-8 left-8 flex items-center gap-3 rounded-lg bg-white p-4 pr-6 text-slate-800 shadow-xl ring-2 ring-black" style="transform: rotate(-3.5deg);">
+                    <svg class="h-9 w-9 text-sky-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c0.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5C21 5.24 16.76 3 12 3zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9S8 9.67 8 10.5S7.33 12 6.5 12zm3-3C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5S11 5.67 11 6.5S10.33 8 9.5 8zm5 0C13.67 8 13 7.33 13 6.5S13.67 5 14.5 5S16 5.67 16 6.5S15.33 8 14.5 8zm3 3c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9S19 9.67 19 10.5S18.33 12 17.5 12z"/></svg>
+                    <span class="text-3xl font-extrabold tracking-tight">eumi.ca</span>
+                </a>
+                <div class="absolute top-10 right-10 space-y-5 text-center">
+                    <a href="#gallery" class="nav-panel block rounded-lg bg-white px-10 py-4 text-xl font-bold text-gray-700 shadow-xl ring-2 ring-black" style="transform: rotate(3deg);">Gallery</a>
+                    <a href="#price" class="nav-panel block rounded-lg bg-white px-10 py-4 text-xl font-bold text-gray-700 shadow-xl ring-2 ring-black" style="transform: rotate(-2.5deg);">Price</a>
+                    <a href="#terms" class="nav-panel block rounded-lg bg-white px-10 py-4 text-xl font-bold text-gray-700 shadow-xl ring-2 ring-black" style="transform: rotate(2deg);">Terms</a>
+                </div>
+                
+                <a href="https://wa.me/6281225963780" target="_blank" class="nav-panel absolute bottom-10 right-10 rounded-lg bg-indigo-600 px-8 py-5 text-2xl font-extrabold text-white shadow-2xl ring-2 ring-black" style="transform: rotate(-4deg);">Pesan Sekarang!</a>
+            </div>
+
+            <div x-show="scrolled" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-full" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-end="opacity-0 -translate-y-full" x-cloak class="fixed top-0 left-0 right-0 z-50 bg-white/95 shadow-2xl ring-1 ring-black/5 backdrop-blur-lg">
+                <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+                    <a href="#" class="flex flex-shrink-0 items-center gap-2 text-slate-800 transition-transform hover:scale-105">
+                        <svg class="h-8 w-8 text-sky-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c0.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5C21 5.24 16.76 3 12 3zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9S8 9.67 8 10.5S7.33 12 6.5 12zm3-3C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5S11 5.67 11 6.5S10.33 8 9.5 8zm5 0C13.67 8 13 7.33 13 6.5S13.67 5 14.5 5S16 5.67 16 6.5S15.33 8 14.5 8zm3 3c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9S19 9.67 19 10.5S18.33 12 17.5 12z"/></svg>
+                        <span class="text-2xl font-bold">eumi.ca</span>
                     </a>
+                    <div class="flex items-center space-x-10">
+                        <a href="#gallery" class="text-lg font-semibold text-gray-600 transition hover:text-indigo-600">Gallery</a>
+                        <a href="#price" class="text-lg font-semibold text-gray-600 transition hover:text-indigo-600">Price</a>
+                        <a href="#terms" class="text-lg font-semibold text-gray-600 transition hover:text-indigo-600">Terms</a>
+                    </div>
+                    <a href="https://wa.me/6281225963780" target="_blank" class="rounded-xl bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-1">Pesan Sekarang</a>
                 </div>
-                <div class="hidden md:flex md:items-center md:space-x-4">
-                    <a href="#" class="nav-bubble text-gray-600 hover:text-indigo-600">Home</a>
-                    <a href="#gallery" class="nav-bubble text-gray-600 hover:text-indigo-600">Gallery</a>
-                    <a href="#price" class="nav-bubble text-gray-600 hover:text-indigo-600">Price</a>
-                    <a href="#terms" class="nav-bubble text-gray-600 hover:text-indigo-600">Terms</a>
-                </div>
-                <div class="hidden md:flex items-center">
-                    <a href="[https://wa.me/6281225963780](https://wa.me/6281225963780)" target="_blank" class="nav-bubble bg-indigo-600 text-white font-bold hover:bg-indigo-700">Pesan Sekarang</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button @click="isOpen = !isOpen" type="button" class="nav-bubble h-14 w-14 text-slate-700 hover:text-indigo-600"><span class="sr-only">Menu</span><svg x-show="!isOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg><svg x-show="isOpen" x-cloak class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
-                </div>
-            </div>
-          </div>
-        <div x-show="isOpen" x-cloak x-transition class="md:hidden absolute top-24 inset-x-0 p-2"><div class="rounded-2xl shadow-xl bg-white/90 backdrop-blur-lg ring-1 ring-black ring-opacity-5 p-4 space-y-3"><a href="#" @click="isOpen = false" class="block text-center py-3 px-4 rounded-full font-semibold bg-indigo-50 text-indigo-700">Home</a><a href="#gallery" @click="isOpen = false" class="block text-center py-3 px-4 rounded-full font-medium text-gray-700 hover:bg-gray-100">Gallery</a><a href="#price" @click="isOpen = false" class="block text-center py-3 px-4 rounded-full font-medium text-gray-700 hover:bg-gray-100">Price</a><a href="#terms" @click="isOpen = false" class="block text-center py-3 px-4 rounded-full font-medium text-gray-700 hover:bg-gray-100">Terms</a><div class="pt-2"><a href="[https://wa.me/6281225963780](https://wa.me/6281225963780)" target="_blank" class="block w-full py-3 px-4 rounded-full text-center font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md">Pesan Sekarang</a></div></div></div>
-      </nav>
-
-      <div class="relative z-10 flex h-screen flex-col items-center justify-center p-8 text-center">
-        <div x-data="{ isLoaded: false }" x-init="setTimeout(() => { isLoaded = true }, 200)" x-show="isLoaded" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
-            <h2 class="text-xl sm:text-2xl font-semibold text-white/80 mb-2 tracking-wide">あなたのためのオーダーメイドアート</h2>
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 bg-gradient-to-r from-slate-100 to-white bg-clip-text text-transparent">Karya Seni Kustom Spesialmu</h1>
-            <p class="text-lg sm:text-xl text-indigo-100/90 mb-8 max-w-xl mx-auto">Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.</p>
-            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#gallery" class="w-full sm:w-auto bg-white text-sky-700 hover:bg-slate-100 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105">Lihat Portofolio</a>
-                <a href="#price" class="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-sky-700 px-8 py-3 rounded-lg text-lg font-semibold text-center transition duration-300 hover:scale-105">Lihat Harga</a>
             </div>
         </div>
-      </div>
-    </section>
+
+        <div x-show="isOpen" x-cloak>
+            <div x-show="isOpen" x-transition.opacity.duration.300ms class="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm" @click="isOpen = false"></div>
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0" x-transition:leave="transition ease-in duration-300 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full" class="md:hidden fixed inset-x-0 bottom-0 z-50 p-4">
+                <div class="space-y-4 rounded-3xl bg-white/95 p-5 ring-2 ring-black backdrop-blur-lg">
+                    <a href="#" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-indigo-100 py-4 text-center text-xl font-bold text-indigo-700">Home</a>
+                    <a href="#gallery" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-slate-50 py-4 text-center text-xl font-bold text-gray-700">Gallery</a>
+                    <a href="#price" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-slate-50 py-4 text-center text-xl font-bold text-gray-700">Price</a>
+                    <a href="#terms" @click="isOpen = false" class="block rounded-xl border-2 border-black bg-slate-50 py-4 text-center text-xl font-bold text-gray-700">Terms</a>
+                    <div class="!mt-6 border-t pt-5">
+                        <a href="https://wa.me/6281225963780" target="_blank" class="block w-full rounded-2xl bg-indigo-600 py-5 text-center text-2xl font-extrabold text-white shadow-lg">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="relative z-20 flex h-screen flex-col items-center justify-center p-8 text-center">  
+        <div x-data="{ isLoaded: false }" x-init="setTimeout(() => { isLoaded = true }, 200)" x-show="isLoaded" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 -translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>  
+            <h2 class="text-xl font-semibold text-white/80 mb-2 tracking-wide sm:text-2xl">あなたのためのオーダーメイドアート</h2>  
+            <h1 class="text-5xl font-extrabold tracking-tighter mb-6 bg-gradient-to-r from-slate-100 to-white bg-clip-text text-transparent sm:text-6xl lg:text-8xl">Karya Seni Kustom Spesialmu</h1>  
+            <p class="text-lg text-indigo-100/90 mb-8 max-w-2xl mx-auto sm:text-xl">Ubah ide atau kenangan menjadi karya seni abadi dengan sentuhan profesional.</p>  
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">  
+                <a href="#gallery" class="w-full sm:w-auto bg-white text-sky-700 hover:bg-slate-100 px-8 py-4 rounded-lg text-lg font-semibold text-center transition duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105">Lihat Portofolio</a>  
+                <a href="#price" class="w-full sm:w-auto bg-transparent border-2 border-white hover:bg-white hover:text-sky-700 px-8 py-4 rounded-lg text-lg font-semibold text-center transition duration-300 hover:scale-105">Lihat Harga</a>  
+            </div>  
+        </div>  
+    </div>  
+</section>
 
     <!-- Portfolio Section -->
     <section 
