@@ -456,7 +456,7 @@
         [x-cloak] { display: none !important; }
     </style>
     
-    
+   
 
   </head>
   
@@ -573,115 +573,101 @@
     
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-full overflow-y-auto py-20 hide-scrollbar">
 
-            <div class="text-center mb-16">
-                <h2 class="font-mplus text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
-                    Art Gallery
-                </h2>
-                <p class="font-mplus mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
-                    Berbagai jenis gambar yang telah dibuat sebelumnya.
-                </p>
-                <div class="mt-6 w-24 h-1 bg-slate-900 mx-auto rounded-full"></div>
+         <div 
+        x-data="{ scrollProgress: 0 }"
+        @scroll.passive="
+            let el = $event.currentTarget;
+            scrollProgress = el.scrollTop / (el.scrollHeight - el.clientHeight);
+        "
+        class="relative z-20 h-full overflow-y-auto hide-scrollbar p-4 sm:p-6"
+    >
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="relative z-10 mb-12 md:mb-16 pt-12">
+                <div class="max-w-2xl mx-auto p-8 bg-slate-900 border-4 border-white shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                    <div class="text-center">
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                            Art Gallery
+                        </h2>
+                        <p class="mt-4 max-w-2xl text-lg text-slate-400 mx-auto">
+                            Berbagai jenis gambar yang telah dibuat sebelumnya.
+                        </p>
+                        <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="hidden md:block">
-                <div class="grid grid-cols-12 grid-rows-2 gap-4">
-                    <div class="col-span-12 lg:col-span-7 row-span-2 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/Fie Commission.jpg" alt="Portrait Art" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="font-mplus text-2xl font-bold">Portrait Keluarga</h3>
+            <div class="hidden md:grid grid-cols-3 gap-6 lg:gap-8 items-start">
+                
+                <div class="space-y-6 lg:space-y-8 transition-transform duration-100 ease-out" :style="`transform: translateY(-${scrollProgress * 120}px)`">
+                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/Fie Commission.jpg" alt="Portrait Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Portrait Keluarga</h3>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-5 row-span-1 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/p_san.jpg" alt="Character Design" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="font-mplus text-xl font-bold">Character Design</h3>
+                    </a>
+                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/Summer 2022.png" alt="Manga Style" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                         <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Gaya Manga</h3>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-5 row-span-1 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="font-mplus text-xl font-bold">Pemandangan Fantasi</h3>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-    
-                <div class="grid grid-cols-12 gap-4 mt-4">
-                    <div class="col-span-6 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="font-mplus text-xl font-bold">Fashion Illustration</h3>
+                
+                <div class="space-y-6 lg:space-y-8 transition-transform duration-100 ease-out" :style="`transform: translateY(${scrollProgress * 60}px)`">
+                     <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/p_san.jpg" alt="Character Design" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Character Design</h3>
                         </div>
-                    </div>
-                    <div class="col-span-6 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/Ellen Cuy 4 5.png" alt="Abstract Art" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="font-mplus text-xl font-bold">Seni Abstrak</h3>
+                    </a>
+                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Chibi Illustration</h3>
                         </div>
-                    </div>
-                    <div class="col-span-12 lg:col-span-4 group relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                        <img src="image/Summer 2022.png" alt="Manga Style" class="aspect-[4/3] h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <h3 class="font-mplus text-xl font-bold">Gaya Manga</h3>
+                    </a>
+                     <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/Ellen Cuy 4 5.png" alt="Abstract Art" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Potret Digital</h3>
                         </div>
-                    </div>
+                    </a>
+                </div>
+                
+                <div class="space-y-6 lg:space-y-8 transition-transform duration-100 ease-out" :style="`transform: translateY(-${scrollProgress * 180}px)`">
+                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Ilustrasi Karakter</h3>
+                        </div>
+                    </a>
+                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
+                        <img src="image/Manyu.jpg" alt="Character Design" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                            <h3 class="text-xl font-bold">Desain Fanart</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
-        
+
             <div class="block md:hidden space-y-8">
-                <div class="relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                    <img src="image/Fie Commission.jpg" alt="Portrait Art" class="aspect-video w-full object-cover object-center" />
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 class="font-mplus text-xl font-bold">Portrait Keluarga</h3>
-                    </div>
-                </div>
-                <div class="relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                    <img src="image/Manyu.jpg" alt="Character Design" class="aspect-video w-full object-cover object-center" />
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 class="font-mplus text-xl font-bold">Character Design</h3>
-                    </div>
-                </div>
-                <div class="relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                    <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="aspect-video w-full object-cover object-center" />
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 class="font-mplus text-xl font-bold">Pemandangan Fantasi</h3>
-                    </div>
-                </div>
-                <div class="relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                    <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-video w-full object-cover object-center" />
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 class="font-mplus text-xl font-bold">Fashion Illustration</h3>
-                    </div>
-                </div>
-                <div class="relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                    <img src="image/violet.jpg" alt="Abstract Art" class="aspect-video w-full object-cover object-center" />
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 class="font-mplus text-xl font-bold">Seni Abstrak</h3>
-                    </div>
-                </div>
-                <div class="relative block w-full overflow-hidden shadow-lg border-2 border-black rounded-lg">
-                    <img src="image/p_san.jpg" alt="Manga Style" class="aspect-video w-full object-cover object-center" />
-                    <div class="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent">
-                        <h3 class="font-mplus text-xl font-bold">Gaya Manga</h3>
-                    </div>
-                </div>
+                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Fie Commission.jpg" class="aspect-video w-full object-cover" /></a>
+                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Manyu.jpg" class="aspect-video w-full object-cover" /></a>
+                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Fluff hair sd.jpg" class="aspect-video w-full object-cover" /></a>
+                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Chibi Lality.jpg" class="aspect-video w-full object-cover" /></a>
+                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/p_san.jpg" class="aspect-video w-full object-cover" /></a>
             </div>
-        
-            <div class="text-center mt-16">
-                <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="font-mplus inline-flex items-center gap-3 bg-slate-900 text-white font-semibold px-8 py-4 rounded-lg hover:bg-indigo-600 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out">
-                    <span>Lihat Lebih Banyak Karya</span>
+
+            <div class="text-center my-16 pb-12">
+                <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-slate-900 font-bold text-xl px-12 py-4 border-4 border-black transition-all duration-300 transform hover:shadow-[8px_8px_0_0_#1e293b] hover:-translate-x-1 hover:-translate-y-1">
+                    Lihat Lebih Banyak Karya
                 </a>
             </div>
 
         </div> 
-    
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 text-center pointer-events-none">
-            <svg class="w-10 h-10 text-slate-800/80 mx-auto" fill="none" viewBox="0 0 24 24">
-              <path class="animate-draw" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 10l5 5 5-5"/>
-              <path class="animate-draw" style="animation-delay: 0.2s" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 15l5 5 5-5"/>
-            </svg>
-        </div>
-
-    </section>
+    </div>
+</section>
 
     <!-- sample Section -->
     <section 
@@ -866,17 +852,16 @@
     <!-- term Section -->
     <section id="terms" class="relative py-20 md:py-32 bg-slate-900 overflow-hidden">
         
-        <div class="absolute inset-0 bg-repeat bg-center opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/gplay.png'); background-size: 40px 40px;"></div>
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900/50"></div>
-        <div class="absolute inset-0 opacity-10 bg-repeat" style="background-image: url('image/WASHI.png');"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/10 to-slate-900"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
-        
+    <div class="absolute inset-0 bg-repeat bg-center opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/gplay.png'); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900/50"></div>
+    <div class="absolute inset-0 opacity-10 bg-repeat" style="background-image: url('image/WASHI.png');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/10 to-slate-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
+    
+    <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6 lg:gap-8 h-[85vh]">
 
-        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-6 lg:gap-8 h-[85vh]">
-        
-        <div class="md:col-span-2 row-span-1 p-6 flex flex-col items-center justify-center bg-white border-4 border-black shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+        <div class="md:col-span-2 row-span-1 p-6 flex flex-col items-center justify-center bg-white shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
             <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter text-slate-900 drop-shadow-lg text-center">
                 Syarat & Ketentuan
             </h2>
@@ -887,10 +872,10 @@
         </div>
 
         <div class="row-span-1 md:row-span-3 bg-slate-700 border-4 border-white shadow-2xl overflow-hidden transform rotate-1 hover:rotate-0 transition-transform duration-300">
-            <img src="image/Fluff hair sd.jpg" alt="Character sketch" class="h-full w-full object-cover object-center scale-110 hover:scale-100 transition-transform duration-500">
+            <img src="image/Fluff%20hair%20sd.jpg" alt="Character sketch" class="h-full w-full object-cover object-center scale-110 hover:scale-100 transition-transform duration-500">
         </div>
 
-        <div class="relative md:col-span-2 row-span-2 p-8 sm:p-10 bg-white border-4 border-black shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-300 overflow-hidden">
+        <div class="relative md:col-span-2 row-span-2 p-8 sm:p-10 bg-white shadow-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-300 overflow-hidden">
             
             <div class="absolute inset-0 opacity-20 bg-repeat" style="background-image: url('https://www.transparenttextures.com/patterns/dot-grid.png');"></div>
             
@@ -910,19 +895,19 @@
             <div class="relative z-10">
                 <ul class="space-y-5 text-slate-700">
                     <li class="flex items-start">
-                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6l-3-3h1.5a3 3 0 100-6M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                         <div class="ml-4">Biaya tambahan <span class="font-semibold text-slate-900">$10</span> untuk setiap karakter tambahan (maks. 1).</div>
                     </li>
                     <li class="flex items-start">
-                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h22.5" /></svg></div>
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18M-4.5 12h22.5"></path></svg></div>
                         <div class="ml-4">Durasi pengerjaan standar adalah <span class="font-semibold text-slate-900">3-7 Hari</span>.</div>
                     </li>
                     <li class="flex items-start">
-                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043 5.043a15.998 15.998 0 01-3.388-1.622m-7.5 0a15.998 15.998 0 003.388 1.622m7.5 0a15.998 15.998 0 01-3.388 1.622m0-13.5a15.998 15.998 0 00-3.388 1.622m7.5 0a15.998 15.998 0 013.388 1.622" /></svg></div>
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.998 15.998 0 011.622-3.385m5.043.025a15.998 15.998 0 001.622-3.385m3.388 1.62a15.998 15.998 0 00-1.622-3.385m-5.043 5.043a15.998 15.998 0 01-3.388-1.622m-7.5 0a15.998 15.998 0 003.388 1.622m7.5 0a15.998 15.998 0 01-3.388 1.622m0-13.5a15.998 15.998 0 00-3.388 1.622m7.5 0a15.998 15.998 0 013.388 1.622"></path></svg></div>
                         <div class="ml-4">Gratis <span class="font-semibold text-slate-900">2x revisi pada tahap sketsa</span>. Revisi selanjutnya dikenakan biaya <span class="font-semibold text-slate-900">$5</span>.</div>
                     </li>
                     <li class="flex items-start">
-                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 21.75z" /></svg></div>
+                        <div class="flex-shrink-0 pt-1"><svg class="w-6 h-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 21.75z"></path></svg></div>
                         <div class="ml-4">Pembayaran penuh via <span class="font-semibold text-slate-900">PayPal</span> dilakukan setelah sketsa disetujui.</div>
                     </li>
                 </ul>
@@ -943,8 +928,6 @@
                 </div>
             </div>
         </div>
-        
-    </div>
     </section>
     
   </body>
