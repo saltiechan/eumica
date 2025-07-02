@@ -490,9 +490,61 @@
   
     
     <!-- Navigation, udah jadi satu sama menu mobile dah ditambah hamburger juga hehe-->
-    <section class="relative min-h-screen w-full overflow-hidden bg-gray-800 text-white">
+    <section class="relative min-h-screen w-full overflow-hidden bg-gray-800 text-white"
+    x-data="{
+        images: [ 'image/Fie Commission.jpg', 'image/Soulmate Joke.jpg', 'image/Fluff hair sd.jpg', 'image/Chibi Lality.jpg', 'image/Yoimiya No Shade.jpg', 'image/p_san.jpg' ], 
+        activeIndex: 0,
+        isMusicOn: false,
 
-    <div class="absolute inset-0" x-data="{ images: [ 'image/Fie Commission.jpg', 'image/Soulmate Joke.jpg', 'image/Fluff hair sd.jpg', 'image/Chibi Lality.jpg', 'image/Yoimiya No Shade.jpg', 'image/p_san.jpg' ], activeIndex: 0 }" x-init="setInterval(() => { activeIndex = (activeIndex + 1) % images.length }, 5000)">
+        initMusicAndSlider() {
+            setInterval(() => { this.activeIndex = (this.activeIndex + 1) % this.images.length }, 5000);
+            const music = this.$refs.bgMusic;
+            if (music) {
+                music.play().catch(e => console.warn('Autoplay was blocked initially.', e));
+            }
+        },
+        enableSoundOnClick() {
+            const music = this.$refs.bgMusic;
+            if (music && music.muted) {
+                music.muted = false;
+                this.isMusicOn = true;
+                music.play();
+            }
+        },
+        toggleMusic() {
+            const music = this.$refs.bgMusic;
+            this.isMusicOn = !this.isMusicOn;
+            music.muted = !this.isMusicOn;
+        }
+    }"
+    x-init="initMusicAndSlider()"
+    @click.once="enableSoundOnClick()"
+>
+    
+    <audio 
+        x-ref="bgMusic"
+        src="sfx/sfx bg.mp3" 
+        loop 
+        muted
+        playsinline
+    ></audio>
+
+    <button 
+        @click.stop="toggleMusic()" 
+        type="button" 
+        class="fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow-xl ring-1 ring-black/5 backdrop-blur-md transition hover:scale-110"
+        style="transform: rotate(-5deg);"
+        aria-label="Toggle Music"
+    >
+        <svg x-show="isMusicOn" class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+        </svg>
+        <svg x-show="!isMusicOn" x-cloak class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+        </svg>
+    </button>
+
+    <div class="absolute inset-0">
         <template x-for="(image, index) in images" :key="index">
             <div class="absolute inset-0 h-full w-full" x-show="activeIndex === index" x-transition:enter="transition-opacity ease-in-out duration-1000" x-transition:leave="transition-opacity ease-in-out duration-1000" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
                 <img :src="image" alt="Latar belakang karya seni" class="h-full w-full object-cover ken-burns" />
@@ -532,7 +584,7 @@
                 <svg x-show="isOpen" x-cloak class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
         </div>
-        
+
         <div x-show="isOpen" x-cloak>
             <div x-show="isOpen" x-transition.opacity.duration.300ms class="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm" @click="isOpen = false"></div>
             <div x-show="isOpen" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="opacity-0 -translate-y-full" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-300 transform" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-full" class="md:hidden fixed inset-x-0 top-0 z-40 p-4">
@@ -604,11 +656,7 @@
             </div>
         </div>
     </div>
-</section>
-
-
-
-
+    </section>
 
     <!-- Portfolio Section -->
     <section id="gallery" class="relative h-screen w-full scroll-snap-align-start overflow-hidden bg-slate-900 text-white">
