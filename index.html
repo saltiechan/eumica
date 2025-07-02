@@ -471,7 +471,18 @@
     }
     </style>
 
-    
+    <style>
+    /* Animasi getar untuk teks "Dododo" */
+    @keyframes shake {
+      0%, 100% { transform: translate(0, 0) rotate(-12deg); }
+      25% { transform: translate(1px, -1px) rotate(-12deg); }
+      50% { transform: translate(-1px, 1px) rotate(-12deg); }
+      75% { transform: translate(-1px, -1px) rotate(-12deg); }
+    }
+    .animate-shake {
+        animation: shake 0.5s ease-in-out infinite;
+    }
+    </style>
    
 
   </head>
@@ -648,40 +659,52 @@
 
         </div>
     </div>
-</section>
+    </section>
 
     <!-- sample Section -->
     <section 
-        id="sample" 
-        class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white"
-    >
-        <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 10px 10px;"></div>
-        <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
-            <svg class="w-[200%] h-[200%] text-slate-300 opacity-20" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="svg-title-starburst">
-                <title id="svg-title-starburst">Latar belakang garis radial</title>
-                <defs>
-                    <g id="line">
-                        <line x1="50" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.5"/>
-                    </g>
-                </defs>
-                <script>
-                  const svg = document.currentScript.parentElement;
-                  const line = svg.querySelector('#line');
-                  for (let i = 0; i < 360; i += 10) {
+    id="sample" 
+    class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white"
+    x-data="{ 
+        shown: false,
+        mouseX: 0, 
+        mouseY: 0,
+        handleMouseMove(event) {
+            const rect = this.$el.getBoundingClientRect();
+            this.mouseX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+            this.mouseY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+        }
+    }"
+    @mousemove.throttle.16ms="handleMouseMove"
+    x-intersect.once.margin.-200px="shown = true"
+>
+    <div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 10px 10px;"></div>
+    <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <svg class="w-[200%] h-[200%] text-slate-300 opacity-20" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" role="img">
+            <defs><g id="line-sample"><line x1="50" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.5"/></g></defs>
+            <script>
+             (function() {
+                const svg = document.currentScript.parentElement;
+                if (svg.children.length > 2) return;
+                for (let i = 0; i < 360; i += 10) {
                     const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-                    use.setAttribute('href', '#line');
+                    use.setAttribute('href', '#line-sample');
                     use.setAttribute('transform', `rotate(${i} 50 50)`);
                     svg.appendChild(use);
-                  }
-                </script>
-            </svg>
-        </div>
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0 pointer-events-none">
-            <h3 class="font-noto-jp font-black text-[25vw] text-slate-200/90 leading-none select-none">サンプル</h3>
-        </div>
-        <div class="absolute top-[20%] left-[58%] z-10 pointer-events-none hidden md:block">
-            <h4 class="font-noto-jp font-black text-7xl md:text-9xl text-slate-900/50 -rotate-12 select-none">ドドド</h4>
-        </div>
+                }
+             })()
+            </script>
+        </svg>
+    </div>
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0 pointer-events-none transition-transform duration-500 ease-out"
+         :style="`transform: translate(${-mouseX * 10}px, ${-mouseY * 10}px) scale(1.05)`">
+        <h3 class="font-noto-jp font-black text-[25vw] text-slate-200/90 leading-none select-none animate-pulse">サンプル</h3>
+    </div>
+    <div class="absolute top-[20%] left-[58%] z-10 pointer-events-none hidden md:block transition-transform duration-500 ease-out" 
+         :style="`transform: translate(${-mouseX * 25}px, ${-mouseY * 25}px)`">
+        <h4 class="font-noto-jp font-black text-7xl md:text-9xl text-slate-900/50 select-none animate-shake">ドドド</h4>
+    </div>
 
         <div class="relative w-full h-full max-w-7xl mx-auto grid grid-cols-12 grid-rows-12 p-4 md:p-8" style="height: 100vh;">
         
@@ -785,8 +808,7 @@
             </div>
             <div class="relative w-full max-w-md md:w-auto order-first md:order-none z-30">
                 <div aria-hidden="true" class="absolute -top-8 -right-8 md:-top-10 md:-right-10 text-6xl md:text-8xl font-black font-noto-jp text-red-500 transform rotate-12" style="text-shadow: -4px 4px 0px #000;">ドン</div>
-                <div aria-hidden="true" class="absolute inset-0 z-0 flex items-center justify-center opacity-40">
-                    <svg class="w-[200%] h-[200%] text-white" viewBox="0 0 100 100" preserveAspectRatio="none"><defs><g id="speedline"><line x1="50" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.5"/></g></defs><script>const svg=document.currentScript.parentElement;if(svg.children.length<5){for(let i=0;i<360;i+=5){const use=document.createElementNS('http://www.w3.org/2000/svg','use');use.setAttribute('href','#speedline');use.setAttribute('transform',`rotate(${i} 50 50)`);svg.appendChild(use)}}</script></svg>
+                    <div aria-hidden="true" class="absolute inset-0 z-0 flex items-center justify-center opacity-40">
                 </div>
                 <div class="price-panel-hero transition-all duration-300 hover:scale-[1.03] relative">
                     <div class="manga-badge absolute -top-5 -left-5 transform -rotate-12">
