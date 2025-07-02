@@ -524,7 +524,7 @@
             setInterval(() => { this.activeIndex = (this.activeIndex + 1) % this.images.length }, 5000);
             const music = this.$refs.bgMusic;
             if (music) {
-                music.volume = 0.3;
+                music.volume = 1;
                 music.play().catch(e => console.warn('Autoplay was blocked initially.', e));
             }
         },
@@ -1106,7 +1106,7 @@
 
         </div>
     </div>
-</section>
+    </section>
 
     <!-- teesti Section -->
     <section id="testimonials" 
