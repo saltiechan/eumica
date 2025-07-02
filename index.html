@@ -750,7 +750,7 @@
     <!-- sample Section -->
     <section 
     id="sample" 
-    class="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white"
+    class="relative w-full flex items-center justify-center overflow-hidden bg-white pt-16 pb-16 md:pt-0 md:pb-0 md:min-h-screen"
     x-data="{ 
         shown: false,
         mouseX: 0, 
@@ -770,19 +770,18 @@
             <defs><g id="line-sample"><line x1="50" y1="50" x2="100" y2="50" stroke="currentColor" stroke-width="0.5"/></g></defs>
             <script>
              (function() {
-                const svg = document.currentScript.parentElement;
-                if (svg.children.length > 2) return;
-                for (let i = 0; i < 360; i += 10) {
-                    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-                    use.setAttribute('href', '#line-sample');
-                    use.setAttribute('transform', `rotate(${i} 50 50)`);
-                    svg.appendChild(use);
-                }
+                 const svg = document.currentScript.parentElement;
+                 if (svg.children.length > 2) return;
+                 for (let i = 0; i < 360; i += 10) {
+                     const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+                     use.setAttribute('href', '#line-sample');
+                     use.setAttribute('transform', `rotate(${i} 50 50)`);
+                     svg.appendChild(use);
+                 }
              })()
             </script>
         </svg>
     </div>
-    
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0 pointer-events-none transition-transform duration-500 ease-out"
          :style="`transform: translate(${-mouseX * 10}px, ${-mouseY * 10}px) scale(1.05)`">
         <h3 class="font-noto-jp font-black text-[25vw] text-slate-200/90 leading-none select-none animate-pulse">サンプル</h3>
@@ -792,35 +791,43 @@
         <h4 class="font-noto-jp font-black text-7xl md:text-9xl text-slate-900/50 select-none animate-shake">ドドド</h4>
     </div>
 
-        <div class="relative w-full h-full max-w-7xl mx-auto grid grid-cols-12 grid-rows-12 p-4 md:p-8" style="height: 100vh;">
+    <div class="relative w-full h-full max-w-7xl mx-auto p-4 md:p-8 grid grid-cols-1 md:grid-cols-12 md:grid-rows-12 gap-y-4 md:gap-y-0" style="min-height: 100vh;">
         
-            <div class="z-20 col-start-2 col-span-10 md:col-start-2 md:col-span-7 row-start-3 row-span-7 lg:row-start-4 lg:row-span-6 p-8 lg:p-12 flex flex-col justify-center bg-slate-900 text-white shadow-2xl clip-path-poly-skew-1">
-                <h2 class="font-mplus text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter">
-                    Kualitas Goresan Dewa?
-                </h2>
-                <p class="font-mplus mt-4 max-w-lg text-base lg:text-lg text-slate-300">
-                    Lihat detailnya sekelas master. Unduh sampel karya seni resolusi tinggi, gratis! Buktikan sendiri.
-                </p>
-                <div class="mt-8">
-                    <a href="#download" target="_blank" class="inline-block bg-red-600 text-white font-bold transform -skew-x-12 transition-transform duration-300 hover:scale-110 hover:bg-red-500">
-                        <span class="inline-block skew-x-12 px-8 py-3">Unduh Sampel!</span>
-                    </a>
-                </div>
+        <div class="z-20 p-8 lg:p-12 flex flex-col justify-center bg-slate-900 text-white shadow-2xl clip-path-poly-skew-1 
+                    md:col-start-2 md:col-span-7 md:row-start-3 md:row-span-7 lg:row-start-4 lg:row-span-6">
+            <h2 class="font-mplus text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tighter">
+                Kualitas Goresan Dewa?
+            </h2>
+            <p class="font-mplus mt-4 max-w-lg text-base lg:text-lg text-slate-300">
+                Lihat detailnya sekelas master. Unduh sampel karya seni resolusi tinggi, gratis! Buktikan sendiri.
+            </p>
+            <div class="mt-8">
+                <a href="#download" target="_blank" class="inline-block bg-red-600 text-white font-bold transform -skew-x-12 transition-transform duration-300 hover:scale-110 hover:bg-red-500">
+                    <span class="inline-block skew-x-12 px-8 py-3">Unduh Sampel!</span>
+                </a>
             </div>
+        </div>
 
-            <div class="image-container z-30 col-start-2 col-span-6 md:col-start-3 md:col-span-4 row-start-8 row-span-4 clip-path-poly-skew-3">
+        <div class="relative flex flex-col space-y-4 md:contents">
+            
+            <div class="image-container z-30 h-80 md:h-auto clip-path-poly-skew-3
+                        md:col-start-2 md:col-span-6 lg:col-start-3 lg:col-span-4 md:row-start-8 md:row-span-4">
                 <img src="image/marin_f.jpg" alt="Lukisan cat air seorang wanita dengan bunga." class="w-full h-full object-cover"/>
             </div>
         
-            <div class="image-container z-20 col-start-6 col-span-5 md:col-start-8 md:col-span-3 row-start-8 row-span-5 clip-path-poly-skew-4">
+            <div class="image-container z-20 h-64 md:h-auto clip-path-poly-skew-4 -mt-32 md:mt-0
+                        md:col-start-8 md:col-span-3 md:row-start-8 md:row-span-5">
                 <img src="image/Nilou sketch.jpg" alt="Karya seni abstrak dengan percikan cat warna-warni." class="w-full h-full object-cover"/>
             </div>
         
-            <div class="image-container z-30 col-start-9 col-span-4 md:col-start-10 md:col-span-3 row-start-9 row-span-3 clip-path-poly-skew-5">
-              <img src="image/Saiguu sk cloth.jpg" alt="Patung klasik Yunani dengan latar belakang cerah." class="w-full h-full object-cover"/>
+            <div class="image-container z-30 h-56 md:h-auto clip-path-poly-skew-5 -mt-24 md:mt-0
+                        md:col-start-9 md:col-span-4 lg:col-start-10 lg:col-span-3 md:row-start-9 md:row-span-3">
+                <img src="image/Saiguu sk cloth.jpg" alt="Patung klasik Yunani dengan latar belakang cerah." class="w-full h-full object-cover"/>
             </div>
         </div>
-    </section>
+
+    </div>
+</section>
 
     <!-- Price Section -->
     <section 
