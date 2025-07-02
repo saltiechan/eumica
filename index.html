@@ -803,24 +803,34 @@
 >
     <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
     <div aria-hidden="true" class="absolute inset-0 z-0 overflow-hidden">
+         <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
         <div class="manga-ornament -top-4 -left-4 rotate-[-15deg]">プライス</div>
         <div class="manga-ornament top-1/4 -right-12 rotate-[20deg] text-5xl">おすすめ</div>
         <div class="manga-ornament bottom-1/4 -left-8 rotate-[-25deg] text-7xl">えらべ！</div>
         <div class="manga-ornament -bottom-0 -right-3 rotate-[10deg] text-10xl">アート</div>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
+        
     </div>
     
     <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 z-20">
 
         <div class="text-center mb-20 md:mb-24 transform -skew-y-2 relative">
-             <div class="inline-block bg-white p-6 md:p-8 border-4 border-slate-800 shadow-lg relative z-10">
+            <div class="absolute -top-4 sm:-top-8 left-1/2 transform -translate-x-1/2 w-full flex justify-center z-0" aria-hidden="true">
+                <span class="font-noto-jp font-black text-8xl sm:text-9xl text-slate-700/50 opacity-20">ドーン！</span>
+            </div>
+            <div class="inline-block bg-white p-6 md:p-8 border-4 border-slate-800 shadow-lg relative z-10">
+                <div aria-hidden="true" class="absolute -left-5 top-1/2 transform -translate-y-1/2 text-indigo-400 text-lg md:text-xl font-bold rotate-[-10deg] font-noto-jp">コミッション</div>
+                <div aria-hidden="true" class="absolute -right-5 top-1/2 transform -translate-y-1/2 text-indigo-400 text-lg md:text-xl font-bold rotate-[15deg] font-noto-jp">オープン</div>
                 <h2 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tighter transform skew-y-2 mb-2">
                     Pilih Paket Karyamu<span class="text-red-500 text-6xl md:text-8xl ml-2 transform -skew-x-12 inline-block">!!</span>
                 </h2>
                 <p class="mt-4 max-w-2xl text-md md:text-lg text-slate-700 mx-auto transform skew-y-2">
                     Tersedia berbagai pilihan untuk mewujudkan idemu.
                 </p>
+            </div>
+             <div aria-hidden="true" class="absolute -bottom-4 left-1/2 h-1.5 w-40 transform -translate-x-1/2">
+                <div class="w-full h-full bg-indigo-500 rounded-full transform -skew-x-12"></div>
+                <div class="w-2/3 h-full bg-red-500 rounded-full transform -skew-x-12 -mt-1.5 ml-4"></div>
             </div>
         </div>
 
@@ -1018,7 +1028,7 @@
         </div>
     </section>
 
-    <!-- term Section -->
+    <!-- teesti Section -->
     <section id="testimonials" 
     class="relative w-full bg-slate-100" 
     x-data="{ 
@@ -1157,5 +1167,7 @@
     </div>
     </section>
     
+    
+
   </body>
 </html>
