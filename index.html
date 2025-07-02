@@ -614,6 +614,8 @@
             </div>
         </div>
 
+        
+
         <div class="hidden md:block">
             <div x-show="!scrolled" x-transition>
                 <a href="#" @click="playSound('sfx-click')" class="nav-panel absolute top-8 left-8 flex items-center gap-3 rounded-lg bg-white p-4 pr-6 text-slate-800 shadow-xl ring-2 ring-black" style="transform: rotate(-3.5deg);">
@@ -628,6 +630,22 @@
                 <a href="https://wa.me/6281225963780" @click="playSound('sfx-confirm')" target="_blank" class="nav-panel absolute bottom-10 right-10 rounded-lg bg-indigo-600 px-8 py-5 text-2xl font-extrabold text-white shadow-2xl ring-2 ring-black" style="transform: rotate(-4deg);">Pesan Sekarang!</a>
             </div>
 
+            <div x-show="scrolled" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-full" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-end="opacity-0 -translate-y-full" x-cloak class="fixed top-0 left-0 right-0 z-50 bg-white/95 shadow-2xl ring-1 ring-black/5 backdrop-blur-lg">
+                <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+                    <a href="#" @click="playSound('sfx-click')" class="flex flex-shrink-0 items-center gap-2 text-slate-800 transition-transform hover:scale-105">
+                        <svg class="h-8 w-8 text-sky-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c0.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5C21 5.24 16.76 3 12 3zM6.5 12C5.67 12 5 11.33 5 10.5S5.67 9 6.5 9S8 9.67 8 10.5S7.33 12 6.5 12zm3-3C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5S11 5.67 11 6.5S10.33 8 9.5 8zm5 0C13.67 8 13 7.33 13 6.5S13.67 5 14.5 5S16 5.67 16 6.5S15.33 8 14.5 8zm3 3c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9S19 9.67 19 10.5S18.33 12 17.5 12z"/></svg>
+                        <span class="text-2xl font-bold">eumi.ca</span>
+                    </a>
+                    <div class="flex items-center space-x-10">
+                        <a href="#gallery" @click="playSound('sfx-click')" class="text-lg font-semibold text-gray-600 transition hover:text-indigo-600">Gallery</a>
+                        <a href="#price" @click="playSound('sfx-click')" class="text-lg font-semibold text-gray-600 transition hover:text-indigo-600">Price</a>
+                        <a href="#terms" @click="playSound('sfx-click')" class="text-lg font-semibold text-gray-600 transition hover:text-indigo-600">Terms</a>
+                    </div>
+                    <a href="https://wa.me/6281225963780" @click="playSound('sfx-confirm')" target="_blank" class="rounded-xl bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:bg-indigo-700 hover:shadow-xl hover:-translate-y-1">Pesan Sekarang</a>
+                </div>
+            </div>
+
+            </div>
             <div x-show="scrolled" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-full" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-end="opacity-0 -translate-y-full" x-cloak class="fixed top-0 left-0 right-0 z-50 bg-white/95 shadow-2xl ring-1 ring-black/5 backdrop-blur-lg">
                 <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
                     <a href="#" @click="playSound('sfx-click')" class="flex flex-shrink-0 items-center gap-2 text-slate-800 transition-transform hover:scale-105">
@@ -657,6 +675,7 @@
         </div>
     </div>
     </section>
+
 
     <!-- Portfolio Section -->
     <section id="gallery" class="relative h-screen w-full scroll-snap-align-start overflow-hidden bg-slate-900 text-white">
