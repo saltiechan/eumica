@@ -454,7 +454,23 @@
         
         /* Cloak to prevent flash of unstyled content */
         [x-cloak] { display: none !important; }
+
+        .gallery-item {
+        transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .gallery-item-hidden {
+        opacity: 0;
+        transform: translateY(40px);
+    }
     </style>
+    
+    <style>
+    /* Dibutuhkan untuk menciptakan ruang 3D */
+    .preserve-3d {
+        transform-style: preserve-3d;
+    }
+    </style>
+
     
    
 
@@ -565,107 +581,72 @@
 
 
     <!-- Portfolio Section -->
-    <section 
-      id="gallery" 
-        class="h-screen w-full scroll-snap-align-start overflow-hidden bg-slate-50 japanese-frame" 
-        style="background-repeat: repeat; background-size: auto;"
-    >
-    
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-full overflow-y-auto py-20 hide-scrollbar">
-
-         <div 
+    <section id="gallery" class="relative h-screen w-full scroll-snap-align-start overflow-hidden bg-slate-900 text-white">
+    <div 
         x-data="{ scrollProgress: 0 }"
         @scroll.passive="
             let el = $event.currentTarget;
-            scrollProgress = el.scrollTop / (el.scrollHeight - el.clientHeight);
+            /* Menghitung progres scroll dari 0 (paling atas) sampai 1 (paling bawah) */
+            scrollProgress = Math.min(1, Math.max(0, el.scrollTop / (el.scrollHeight - el.clientHeight)));
         "
-        class="relative z-20 h-full overflow-y-auto hide-scrollbar p-4 sm:p-6"
+        class="h-full w-full overflow-y-auto hide-scrollbar"
     >
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
 
-            <div class="relative z-10 mb-12 md:mb-16 pt-12">
-                <div class="max-w-2xl mx-auto p-8 bg-slate-900 border-4 border-white shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                    <div class="text-center">
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-                            Art Gallery
-                        </h2>
-                        <p class="mt-4 max-w-2xl text-lg text-slate-400 mx-auto">
-                            Berbagai jenis gambar yang telah dibuat sebelumnya.
-                        </p>
-                        <div class="mt-6 w-24 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+            <div class="relative text-center mb-24">
+                <div class="relative max-w-2xl mx-auto bg-slate-100 rounded-lg shadow-2xl p-8 pt-16">
+                    <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-3xl shadow-lg ring-4 ring-slate-100 animate-pulse">
+                        <span>作</span>
+                    </div>
+                    <h2 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
+                        Art Gallery
+                    </h2>
+                    <p class="mt-4 max-w-2xl text-lg text-slate-600 mx-auto">
+                        karya seni yang telah dibuat.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="hidden md:block h-[150vh] [perspective:1000px]">
+                <div class="sticky top-1/4 grid grid-cols-3 gap-6 lg:gap-8 preserve-3d">
+                    
+                    <div class="space-y-6 lg:space-y-8 transition-all duration-500 ease-out" 
+                         :style="`transform: translateX(-${scrollProgress * 50}%) rotateY(${scrollProgress * 45}deg) rotateX(${scrollProgress * 5}deg); filter: brightness(${1 - scrollProgress * 0.3})`">
+                        <a href="#" class="group block"><img src="image/Fie Commission.jpg" alt="Portrait Art" class="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
+                        <a href="#" class="group block"><img src="image/Summer 2022.png" alt="Manga Style" class="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
+                    </div>
+                    
+                    <div class="space-y-6 lg:space-y-8 transition-all duration-500 ease-out" 
+                         :style="`transform: translateZ(${Math.sin(scrollProgress * Math.PI) * 200}px) scale(${1 + Math.sin(scrollProgress * Math.PI) * 0.2})`">
+                         <a href="#" class="group block"><img src="image/p_san.jpg" alt="Character Design" class="w-full aspect-square object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
+                         <a href="#" class="group block"><img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="w-full aspect-square object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
+                         <a href="#" class="group block"><img src="image/Ellen Cuy 4 5.png" alt="Abstract Art" class="w-full aspect-square object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
+                    </div>
+                    
+                    <div class="space-y-6 lg:space-y-8 transition-all duration-500 ease-out" 
+                         :style="`transform: translateX(${scrollProgress * 50}%) rotateY(-${scrollProgress * 45}deg) rotateX(${scrollProgress * 5}deg); filter: brightness(${1 - scrollProgress * 0.3})`">
+                        <a href="#" class="group block"><img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
+                        <a href="#" class="group block"><img src="image/Manyu.jpg" alt="Character Design" class="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl transition-all duration-300 group-hover:shadow-indigo-500/50" /></a>
                     </div>
                 </div>
             </div>
 
-            <div class="hidden md:grid grid-cols-3 gap-6 lg:gap-8 items-start">
-                
-                <div class="space-y-6 lg:space-y-8 transition-transform duration-100 ease-out" :style="`transform: translateY(-${scrollProgress * 120}px)`">
-                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/Fie Commission.jpg" alt="Portrait Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Portrait Keluarga</h3>
-                        </div>
-                    </a>
-                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/Summer 2022.png" alt="Manga Style" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                         <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Gaya Manga</h3>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="space-y-6 lg:space-y-8 transition-transform duration-100 ease-out" :style="`transform: translateY(${scrollProgress * 60}px)`">
-                     <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/p_san.jpg" alt="Character Design" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Character Design</h3>
-                        </div>
-                    </a>
-                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/Chibi Lality.jpg" alt="Fashion Illustration" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Chibi Illustration</h3>
-                        </div>
-                    </a>
-                     <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/Ellen Cuy 4 5.png" alt="Abstract Art" class="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Potret Digital</h3>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="space-y-6 lg:space-y-8 transition-transform duration-100 ease-out" :style="`transform: translateY(-${scrollProgress * 180}px)`">
-                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/Fluff hair sd.jpg" alt="Landscape Art" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Ilustrasi Karakter</h3>
-                        </div>
-                    </a>
-                    <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-2xl">
-                        <img src="image/Manyu.jpg" alt="Character Design" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                        <div class="absolute inset-0 flex items-end p-4 text-white bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            <h3 class="text-xl font-bold">Desain Fanart</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
             <div class="block md:hidden space-y-8">
-                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Fie Commission.jpg" class="aspect-video w-full object-cover" /></a>
-                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Manyu.jpg" class="aspect-video w-full object-cover" /></a>
-                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Fluff hair sd.jpg" class="aspect-video w-full object-cover" /></a>
-                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/Chibi Lality.jpg" class="aspect-video w-full object-cover" /></a>
-                <a href="#" class="group relative block w-full overflow-hidden rounded-lg shadow-xl"><img src="image/p_san.jpg" class="aspect-video w-full object-cover" /></a>
+                <img src="image/Fie Commission.jpg" class="aspect-video w-full object-cover rounded-lg shadow-xl" />
+                <img src="image/Manyu.jpg" class="aspect-video w-full object-cover rounded-lg shadow-xl" />
+                <img src="image/Fluff hair sd.jpg" class="aspect-video w-full object-cover rounded-lg shadow-xl" />
+                <img src="image/Chibi Lality.jpg" class="aspect-video w-full object-cover rounded-lg shadow-xl" />
+                <img src="image/p_san.jpg" class="aspect-video w-full object-cover rounded-lg shadow-xl" />
             </div>
 
-            <div class="text-center my-16 pb-12">
-                <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-slate-900 font-bold text-xl px-12 py-4 border-4 border-black transition-all duration-300 transform hover:shadow-[8px_8px_0_0_#1e293b] hover:-translate-x-1 hover:-translate-y-1">
+            <div class="text-center mt-20 pb-12">
+                <a href="https://www.instagram.com/eumi.ca" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-slate-900 font-bold text-xl px-12 py-4 border-4 border-black transition-all duration-300 transform hover:shadow-[8px_8px_0_0_#4f46e5] hover:-translate-x-1 hover:-translate-y-1">
                     Lihat Lebih Banyak Karya
                 </a>
             </div>
 
-        </div> 
+        </div>
     </div>
 </section>
 
