@@ -1028,6 +1028,76 @@
         </div>
     </section>
 
+    <section id="about" 
+    class="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-white py-20 px-4 sm:px-6 lg:px-8"
+    x-data="{ isLoaded: false }" 
+    x-init="setTimeout(() => { isLoaded = true }, 250)"
+>
+    <div aria-hidden="true" class="absolute inset-0 -z-10">
+        <div class="absolute left-1/2 top-0 h-[30rem] w-[50rem] -translate-x-1/3 rounded-full bg-indigo-100/30 blur-3xl"></div>
+        <span class="absolute bottom-1/4 right-8 font-noto-jp text-[150px] font-black text-slate-200/80 rotate-12 select-none hidden lg:block">アーティスト</span>
+    </div>
+
+    <div aria-hidden="true" class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <svg class="w-2/3 lg:w-1/3 h-auto text-red-500/10 transform -rotate-12" viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M62 14h-8V9a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v5H2a1 1 0 0 0 0 2h8v34h-7a1 1 0 0 0 0 2h54a1 1 0 0 0 0-2h-7V16h8a1 1 0 0 0 0-2ZM12 10h40v4H12ZM18 51V16h28v35Z"></path>
+        </svg>
+    </div>
+
+    <div 
+        class="relative z-10 w-full max-w-6xl mx-auto"
+        x-show="isLoaded"
+    >
+        <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
+            
+            <div 
+                class="w-full max-w-sm mx-auto lg:max-w-none"
+                x-show="isLoaded"
+                x-transition:enter="transition ease-out duration-1000"
+                x-transition:enter-start="opacity-0 -translate-x-10 -rotate-12"
+                x-transition:enter-end="opacity-100 translate-x-0 -rotate-3"
+            >
+                <div class="p-3 sm:p-4 bg-slate-800 border-4 border-white shadow-2xl transform -rotate-3 transition-transform duration-300 hover:rotate-0 hover:scale-105">
+                    <img class="aspect-[3/4] w-full bg-gray-300 object-cover" src="image/Chibi Lality.jpg" alt="Foto atau avatar dari seniman eumi.ca">
+                </div>
+            </div>
+
+            <div 
+                class="text-center lg:text-left"
+                x-show="isLoaded"
+                x-transition:enter="transition ease-out duration-1000"
+                x-transition:enter-start="opacity-0 translate-x-10"
+                x-transition:enter-end="opacity-100 translate-x-0"
+                style="transition-delay: 300ms;"
+            >
+                <p class="text-base font-semibold leading-7 text-indigo-600">Perkenalkan, Seniman di Balik Karya</p>
+                <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-mplus">Hai, Saya eumi.ca!</h2>
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Seni adalah cara saya bercerita, menangkap emosi, dan menciptakan dunia baru. Berawal dari kecintaan pada anime dan manga, saya mendedikasikan diri untuk menghasilkan karya digital yang ekspresif dan penuh warna untuk Anda.
+                </p>
+                
+                <dl class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 text-left">
+                    <div class="flex gap-x-4">
+                        <div class="flex-shrink-0"><div class="bg-indigo-600 text-white h-10 w-10 rounded-lg flex items-center justify-center"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.311a7.5 7.5 0 0 1-7.5 0c-1.421 0-2.8 0-4.125 0a4.5 4.5 0 0 1-4.5-4.5v-1.5a18.75 18.75 0 0 1 18.75 0v1.5a4.5 4.5 0 0 1-4.5 4.5c-1.325 0-2.704 0-4.125 0Z" /></svg></div></div>
+                        <div>
+                            <dt class="font-semibold text-gray-900">Kolaborasi & Komunikasi</dt>
+                            <dd class="mt-1 text-gray-600">Proses yang transparan dan selalu mendengarkan masukan Anda.</dd>
+                        </div>
+                    </div>
+                    <div class="flex gap-x-4">
+                        <div class="flex-shrink-0"><div class="bg-indigo-600 text-white h-10 w-10 rounded-lg flex items-center justify-center"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" /></svg></div></div>
+                        <div>
+                            <dt class="font-semibold text-gray-900">Kualitas & Detail</dt>
+                            <dd class="mt-1 text-gray-600">Hasil akhir resolusi tinggi yang memuaskan dan penuh detail.</dd>
+                        </div>
+                    </div>
+                </dl>
+            </div>
+
+        </div>
+    </div>
+</section>
+
     <!-- teesti Section -->
     <section id="testimonials" 
     class="relative w-full bg-slate-100" 
@@ -1166,6 +1236,7 @@
         </div>
     </div>
     </section>
+    
     
     
 
