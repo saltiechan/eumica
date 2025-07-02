@@ -495,6 +495,19 @@
         transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 </style>
+
+<style>
+    /* Menerapkan scroll-snap pada container utama halaman */
+    html {
+        scroll-behavior: smooth; /* Membuat scroll menjadi lebih halus */
+        scroll-snap-type: y mandatory; /* Mengaktifkan snap vertikal yang "memaksa" */
+    }
+
+    /* Setiap section utama menjadi titik henti scroll */
+    section {
+        scroll-snap-align: start; /* Pastikan section "menempel" di bagian atas layar */
+    }
+</style>
     
   </head>
   
@@ -799,17 +812,14 @@
     <!-- Price Section -->
    <section 
     id="price" 
-    class="relative min-h-screen w-full scroll-snap-align-start flex items-center justify-center py-20 md:py-24 bg-slate-900"
+    class="relative min-h-screen w-full flex items-center justify-center py-20 md:py-24 bg-slate-900"
 >
     <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
     <div aria-hidden="true" class="absolute inset-0 z-0 overflow-hidden">
-         <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-indigo-900/40 to-slate-900"></div>
         <div class="manga-ornament -top-4 -left-4 rotate-[-15deg]">プライス</div>
         <div class="manga-ornament top-1/4 -right-12 rotate-[20deg] text-5xl">おすすめ</div>
         <div class="manga-ornament bottom-1/4 -left-8 rotate-[-25deg] text-7xl">えらべ！</div>
         <div class="manga-ornament -bottom-0 -right-3 rotate-[10deg] text-10xl">アート</div>
-        
     </div>
     
     <div class="relative container mx-auto px-4 sm:px-6 lg:px-8 z-20">
